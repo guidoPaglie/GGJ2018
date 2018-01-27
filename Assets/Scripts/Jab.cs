@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System;
 
-public class Receptor : MonoBehaviour 
+public class Jab : MonoBehaviour 
 {
     public SpriteRenderer MyConnector;
     public GameObject MyLight;
@@ -9,9 +8,9 @@ public class Receptor : MonoBehaviour
     public int Id { get; private set; }
 
     private bool _isCaller;
-    private bool _isConnected;
-    
-    public event Action<int> OnReceptorSelected = delegate { };
+
+    public delegate bool ReceptorSelected(int id);
+    public event ReceptorSelected OnReceptorSelected;
 
     public void Initialize(int id)
     {
@@ -26,22 +25,20 @@ public class Receptor : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (_isCaller)
+        if (OnReceptorSelected != null)
         {
-            if (!_isConnected)
+            var selectionResponse = OnReceptorSelected(Id);
+
+            if (selectionResponse && _isCaller)
             {
-				_isConnected = true;    
                 MyConnector.color = Color.red;
             }
         }
-
-        OnReceptorSelected(Id);
     }
 
     public void Reset()
     {
         _isCaller = false;
-        _isConnected = false;
         MyLight.SetActive(false);
         MyConnector.color = Color.white;
     }

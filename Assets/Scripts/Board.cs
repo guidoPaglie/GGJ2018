@@ -10,11 +10,11 @@ public class Board : MonoBehaviour {
 	public int Rows;
 	public int Cols;
 
-	private List<Receptor> board;
+	private List<Jab> board;
 
 	void Awake () 
 	{
-		board = new List<Receptor>();
+		board = new List<Jab>();
 
         InstantiateReceptors ();
 	}
@@ -28,7 +28,7 @@ public class Board : MonoBehaviour {
 			for (int j = 0; j < Rows; j++) 
 			{
 				Vector2 pos = new Vector2 (j * 1, i * -1);
-				Receptor newReceptor = Instantiate (Receptor, pos, Quaternion.identity, this.transform).GetComponent<Receptor>();
+				Jab newReceptor = Instantiate (Receptor, pos, Quaternion.identity, this.transform).GetComponent<Jab>();
                 newReceptor.Initialize(id);
 				board.Add(newReceptor);
 
@@ -37,7 +37,7 @@ public class Board : MonoBehaviour {
 		}	
 	}
 
-    public void SubscribeToReceptorEvent(Action<int> callback)
+    public void SubscribeToReceptorEvent(Jab.ReceptorSelected callback)
     {
         foreach (var receptor in board)
         {
