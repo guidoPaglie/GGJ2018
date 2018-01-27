@@ -7,6 +7,7 @@ using UnityEngine;
 public class TelephoneCentral
 {
     private Board board;
+    private StressController stressController;
     private GameController gameController;
     private PhoneUsers phoneUsers;
 
@@ -19,13 +20,15 @@ public class TelephoneCentral
     private int phoneCallIndex;
     private PhoneCall currentPhoneCall;
 
-    public TelephoneCentral(GameController gameController, Board board, PhoneUsers phoneUsers)
+    public TelephoneCentral(GameController gameController, Board board, StressController stressController, PhoneUsers phoneUsers)
     {
         this.board = board;
+        this.stressController = stressController;
         this.gameController = gameController;
         this.phoneUsers = phoneUsers;
 
         board.SubscribeToReceptorEvent(ConnectCall);
+        stressController.OnStressPeak += EndCalls;
 
         LoadCallGroups();
     }
@@ -72,9 +75,14 @@ public class TelephoneCentral
             {
                 currentPhoneCall.connected = true;
                 board.CallCompleted(currentPhoneCall.caller, currentPhoneCall.receiver);
+                stressController.EndCall(phoneCalls.IndexOf(currentPhoneCall));
                 gameController.CallCompleted();
                 currentPhoneCall = null;
                 return true;
+            }
+            else
+            {
+                stressController.WrongConnection();
             }
         }
 
@@ -84,11 +92,13 @@ public class TelephoneCentral
     public void NotifyIncomingCall(PhoneCall phoneCall)
     {
         board.IncomingCall(phoneCall.caller);
+        stressController.RegisterCall(phoneCalls.IndexOf(phoneCall));
     }
 
     public void EndCalls()
     {
         gameController.StopCoroutine(GenerateCalls());
+        gameController.NotifyGameOver();
     }
 
     public void OnUpdate()

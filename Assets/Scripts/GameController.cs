@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
 
     public Board Board;
     public GameplayScreen GameplayScreen;
+    public StressController StressController;
 
     public GameObject PhoneUserPrefab;
 
@@ -15,19 +16,24 @@ public class GameController : MonoBehaviour {
     private PhoneUsers _phoneUsers;
     private PhoneCallsHarcode _phoneCallsHarcoded;
 
-	void Start () 
+    private bool norahIsAlive = true;
+
+    void Start () 
     {
         _phoneUsers = new PhoneUsers();
         _phoneCallsHarcoded = new PhoneCallsHarcode();
 
-        _telephoneCentral = new TelephoneCentral(this, Board, _phoneUsers);
+        _telephoneCentral = new TelephoneCentral(this, Board, StressController, _phoneUsers);
 
         _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[CurrentRound], 0.5f, false);
 	}
 
     private void Update()
     {
-        _telephoneCentral.OnUpdate();    
+        if (norahIsAlive)
+        {
+            _telephoneCentral.OnUpdate();
+        }
     }
 
     public void NotifyShowCaller(int currentCaller)
@@ -44,5 +50,11 @@ public class GameController : MonoBehaviour {
     {
         CurrentRound++;
         _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[CurrentRound], 0.5f, false);
+    }
+
+    public void NotifyGameOver()
+    {
+        norahIsAlive = false;
+        Debug.Log("GAME OVER");
     }
 }
