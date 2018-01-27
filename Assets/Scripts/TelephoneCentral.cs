@@ -72,26 +72,3 @@ public class TelephoneCentral : MonoBehaviour
         }
     }
 }
-
-/*
- * Generar llamadas
- * Enviar las llamadas a FE
- * Recivir conecciones
- * Verificar si estan correctamente conectadas
- * Responder como fue la coneccion
- * 
-*/
-
-public class PhoneCall
-{
-    public PhoneCall(int c, int r)
-    {
-        caller = c;
-        receiver = r;
-    }
-
-    public int caller;
-    public int receiver;
-
-    public bool connected;
-}
