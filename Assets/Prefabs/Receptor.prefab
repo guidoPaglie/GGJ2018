@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyConnector: {fileID: 212500004830273206}
-  MyLight: {fileID: 212582309134605430}
+  MyLight: {fileID: 1407910930413002}
 --- !u!212 &212500004830273206
 SpriteRenderer:
   m_ObjectHideFlags: 1
