@@ -1,34 +1,44 @@
-﻿using System.Collections;
+﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Board : MonoBehaviour {
 
-	public GameObject Connector;
+	public GameObject Receptor;
 
 	public int Rows;
 	public int Cols;
 
-	private RectTransform myRT;
-	private GameObject[,] board;
+	private List<Receptor> board;
 
-	void Start () 
+	void Awake () 
 	{
-		board = new GameObject[Rows, Cols];
+		board = new List<Receptor>();
 
-		for (int i = 0; i < Rows; i++) 
-		{
-			for (int j = 0; j < Cols; j++) 
-			{
-				GameObject obj = Instantiate (Connector, Vector3.zero, Quaternion.identity, this.transform);
-				board [i, j] = obj;
-			}
-		}
+        InstantiateReceptors ();
 	}
-	
-	void Update ()
+
+    void InstantiateReceptors ()
 	{
-		
+        int id = 0;
+
+		for (int i = 0; i < Cols; i++) 
+		{
+			for (int j = 0; j < Rows; j++) 
+			{
+				Vector2 pos = new Vector2 (i * 1, j * 1);
+				Receptor newReceptor = Instantiate (Receptor, pos, Quaternion.identity, this.transform).GetComponent<Receptor>();
+
+                newReceptor.Initialize(id);
+                id++;
+
+				board.Add(newReceptor);
+			}
+		}	
+	}
+
+    public void IncomingCall (int caller, int receiver)
+	{
+        board.FirstOrDefault(receptor => receptor.Id == caller).TurnLightOn();
 	}
 }
