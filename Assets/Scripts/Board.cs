@@ -26,7 +26,7 @@ public class Board : MonoBehaviour {
 		{
 			for (int j = 0; j < Rows; j++) 
 			{
-				Vector2 pos = new Vector2 (j * 1, i * 1);
+				Vector2 pos = new Vector2 (j * 1, i * -1);
 				Receptor newReceptor = Instantiate (Receptor, pos, Quaternion.identity, this.transform).GetComponent<Receptor>();
                 newReceptor.Initialize(id);
 				board.Add(newReceptor);

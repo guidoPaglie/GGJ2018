@@ -44,7 +44,7 @@ public class TelephoneCentral : MonoBehaviour
 
     public void NotifyIncomingCall(PhoneCall phoneCall)
     {
-        board.IncomingCall(phoneCall.caller, phoneCall.receiver);
+        board.IncomingCall(phoneCall.caller);
     }
 
     private void Update()
