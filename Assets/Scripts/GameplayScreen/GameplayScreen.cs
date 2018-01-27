@@ -1,26 +1,28 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 
 public class GameplayScreen : MonoBehaviour
 {
-    public Button BackBtn;
     public Board Board;
+
+    public GameObject Callers;
+    public GameObject Receivers;
+    public GameObject StressGauge;
+
+    public Text MessageText;
 
     public List<PhoneUserView> CallersContainer;
     public List<PhoneUserView> ReceiversContainer;
 
-    public void Start()
+    public void StartRound(bool visible)
     {
-        BackBtn.onClick.AddListener(GoToMainMenu);
-    }
-
-    private void GoToMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        Callers.SetActive(visible);    
+        Receivers.SetActive(visible);
+        StressGauge.SetActive(visible);
+        MessageText.gameObject.SetActive(visible);
     }
 
     public void PositionateUserWithSprite(PhoneUser caller, int id)
@@ -37,7 +39,7 @@ public class GameplayScreen : MonoBehaviour
     {
         ReceiversContainer.FirstOrDefault(user => !user.inUse).SetUser(receiver.CharacterSprite, receiver.Id);
 
-        yield return new WaitForSeconds(GameController.TimerPeopleTalking);
+        yield return new WaitForSeconds(GameController.TIME_PEOPLE_TALKING);
 
         CallersContainer.FirstOrDefault(user => user.id == caller.Id).Reset();
         ReceiversContainer.FirstOrDefault(user => user.id == receiver.Id).Reset();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -13,7 +14,8 @@ public enum GameState
 
 public class GameController : MonoBehaviour {
 
-    public static float TimerPeopleTalking = 1.0f;
+    public static float TIME_PEOPLE_TALKING = 1.0f;
+    public static float TIME_BETWEEN_ROUNDS = 1.0f;
 
     public Board Board;
     public GameplayScreen GameplayScreen;
@@ -27,6 +29,9 @@ public class GameController : MonoBehaviour {
 
     private GameState currentGameState = GameState.NOT_PLAYING;
 
+    public List<Sprite> RoundSprites;
+    public SpriteRenderer RoundSprite;
+
     void Start () 
     {
         _phoneUsers = new PhoneUsers();
@@ -34,8 +39,7 @@ public class GameController : MonoBehaviour {
 
         _telephoneCentral = new TelephoneCentral(this, Board, StressController, _phoneUsers);
 
-        currentGameState = GameState.PLAYING;
-        _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], 1.5f, false);
+        StartCoroutine(StartRound(0.0f, TIME_BETWEEN_ROUNDS));
     }
 
     private void Update()
@@ -65,14 +69,25 @@ public class GameController : MonoBehaviour {
         _currentRound++;
 
         currentGameState = GameState.END_OF_ROUND;
-        StartCoroutine(Testing());
+
+        StartCoroutine(StartRound(TIME_PEOPLE_TALKING, TIME_BETWEEN_ROUNDS));
     }
 
-    private IEnumerator Testing()
+    private IEnumerator StartRound(float endOfRound, float difRound)
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(endOfRound);
 
+        GameplayScreen.StartRound(false);
+
+        RoundSprite.gameObject.SetActive(true);
+        RoundSprite.sprite = RoundSprites[_currentRound];
+
+        yield return new WaitForSeconds(difRound);
+
+        RoundSprite.gameObject.SetActive(false);
         currentGameState = GameState.PLAYING;
+
+        GameplayScreen.StartRound(true);
         _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], 0.5f, false);
     }
 
