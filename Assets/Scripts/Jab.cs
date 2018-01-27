@@ -12,7 +12,7 @@ public class Jab : MonoBehaviour
 
     private bool _isCaller;
 
-    public delegate bool ReceptorSelected(int id);
+    public delegate ConnectionResult ReceptorSelected(int id);
     public event ReceptorSelected OnReceptorSelected;
 
     public void Initialize(int id)
@@ -32,14 +32,17 @@ public class Jab : MonoBehaviour
         {
             var selectionResponse = OnReceptorSelected(Id);
 
-            if (selectionResponse)
+            if (selectionResponse == ConnectionResult.IS_CALLER || selectionResponse == ConnectionResult.IS_RECEIVER)
                 MyConnector.color = GetColor();
 
-            if (!selectionResponse && TelephoneCentral.Instance.HasCurrentCall())
+            if (selectionResponse == ConnectionResult.IS_WRONG)
+            {
+                MyConnector.color = GetColor();
                 StartCoroutine(WrongJab());
-                
+            }
         }
     }
+
     private IEnumerator WrongJab()
     {
         yield return new WaitForSeconds(timeJabErrorOn);

@@ -3,6 +3,14 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
+public enum GameState
+{
+    NOT_PLAYING,
+    PLAYING,
+    END_OF_ROUND,
+    GAMEOVER
+}
+
 public class GameController : MonoBehaviour {
 
     public static float TimerPeopleTalking = 1.0f;
@@ -16,7 +24,8 @@ public class GameController : MonoBehaviour {
     private PhoneCallsHarcode _phoneCallsHarcoded;
 
     private int _currentRound;
-    private bool norahIsAlive = true;
+
+    private GameState currentGameState = GameState.NOT_PLAYING;
 
     void Start () 
     {
@@ -25,12 +34,13 @@ public class GameController : MonoBehaviour {
 
         _telephoneCentral = new TelephoneCentral(this, Board, StressController, _phoneUsers);
 
+        currentGameState = GameState.PLAYING;
         _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], 1.5f, false);
     }
 
     private void Update()
     {
-        if (norahIsAlive)
+        if (currentGameState == GameState.PLAYING)
         {
             _telephoneCentral.OnUpdate();
         }
@@ -51,14 +61,24 @@ public class GameController : MonoBehaviour {
 
     public void NotifyEndOfRound()
     {
+        Debug.Log("ROUND FINISH");
         _currentRound++;
 
+        currentGameState = GameState.END_OF_ROUND;
+        StartCoroutine(Testing());
+    }
+
+    private IEnumerator Testing()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        currentGameState = GameState.PLAYING;
         _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], 0.5f, false);
     }
 
     public void NotifyGameOver()
     {
-        norahIsAlive = false;
+        currentGameState = GameState.GAMEOVER;
         Debug.Log("GAME OVER");
     }
 }

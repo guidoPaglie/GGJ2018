@@ -25,13 +25,13 @@ public class StressController : MonoBehaviour
     public void RegisterCall(int id)
     {
         pendingCalls.Add(id, new PendingCall(DateTime.UtcNow));
-        Debug.Log("call registered" + id);
+        //Debug.Log("call registered" + id);
     }
 
     public void EndCall(int id)
     {
         pendingCalls.Remove(id);
-        Debug.Log("call ended" + id);
+        //Debug.Log("call ended" + id);
     }
 
     public void WrongConnection()
@@ -50,7 +50,7 @@ public class StressController : MonoBehaviour
             {
                 stressLevel += stressOnDelay;
                 pendingCall.Value.delay++;
-                Debug.Log("Delay" + pendingCall.Key);
+                //Debug.Log("Delay" + pendingCall.Key);
             }
         }
 

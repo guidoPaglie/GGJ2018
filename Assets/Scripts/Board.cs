@@ -9,6 +9,9 @@ public class Board : MonoBehaviour {
 	public int Rows;
 	public int Cols;
 
+    public float difX = 2.0f;
+    public float difY = 1.20f;
+
 	private List<Jab> board;
 
 	void Awake () 
@@ -26,7 +29,7 @@ public class Board : MonoBehaviour {
 		{
 			for (int j = 0; j < Rows; j++) 
 			{
-				Vector2 pos = new Vector2 (j * 2.0f, i * -1.20f);
+                Vector2 pos = new Vector2 (j * difX, i * -difY);
                 Jab newJab = Instantiate (JabPrefab, pos, Quaternion.identity).GetComponent<Jab>();
                 newJab.Initialize(id);
 				board.Add(newJab);

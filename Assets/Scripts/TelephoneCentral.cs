@@ -4,6 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public enum ConnectionResult
+{
+    IS_CALLER,
+    IS_RECEIVER,
+    IS_WRONG,
+    IS_VOID  // es cuando no hay que prender nada
+}
+
 public class TelephoneCentral
 {
     public static TelephoneCentral Instance;
@@ -62,7 +70,7 @@ public class TelephoneCentral
         }
     }
 
-    public bool ConnectCall(int receptorId)
+    public ConnectionResult ConnectCall(int receptorId)
     {
         if (phoneCalls.Count(x => !x.connected) > 0)
         {
@@ -71,8 +79,10 @@ public class TelephoneCentral
                 currentPhoneCall = phoneCalls.Take(phoneCallIndex).FirstOrDefault(x => !x.connected && x.caller == receptorId);
 
                 if (currentPhoneCall != null)
+                {
                     gameController.NotifyShowCaller(currentPhoneCall.caller);
-                return true;
+                    return ConnectionResult.IS_CALLER;
+                }
             }
             else if (currentPhoneCall.receiver == receptorId)
             {
@@ -80,15 +90,17 @@ public class TelephoneCentral
                 stressController.EndCall(phoneCalls.IndexOf(currentPhoneCall));
                 gameController.CallCompleted(currentPhoneCall.caller, receptorId);
                 currentPhoneCall = null;
-                return true;
+                return ConnectionResult.IS_RECEIVER;
             }
             else
             {
                 stressController.WrongConnection();
+                return ConnectionResult.IS_WRONG;
+
             }
         }
 
-        return false;
+        return ConnectionResult.IS_VOID;
     }
 
     public void NotifyIncomingCall(PhoneCall phoneCall)
@@ -126,10 +138,14 @@ public class TelephoneCentral
 
         if (phoneCalls.Count(x => x.connected) == phoneCalls.Count)
         {
-            EndCalls();
-            phoneCallIndex = 0;
-            gameController.NotifyEndOfRound();
+            RoundFinish();
         }
+    }
+
+    private void RoundFinish()
+    {
+        phoneCallIndex = 0;
+        gameController.NotifyEndOfRound();
     }
 
     private bool NextPhoneCallIsValid()
