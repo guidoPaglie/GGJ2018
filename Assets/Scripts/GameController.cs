@@ -1,28 +1,34 @@
-﻿using UnityEngine;
-using System.Linq;
+﻿using System.Linq;
+using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    public Board Board;
     public GameplayScreen GameplayScreen;
 
-    public GameObject PhoneUser;
-    public TelephoneCentral TelephoneCentral;
+    public GameObject PhoneUserPrefab;
 
-    private GameObject _currentCaller;
-    private GameObject _currentReceiver;
+    private TelephoneCentral _telephoneCentral;
 
     private PhoneUsers _phoneUsers;
 
 	void Start () 
     {
-        _phoneUsers = new PhoneUsers();	
+        _phoneUsers = new PhoneUsers();
 
-        TelephoneCentral.Initialize();
+        _telephoneCentral = new TelephoneCentral(this, Board, _phoneUsers);
+
+        _telephoneCentral.InitializeGame();
 	}
+
+    private void Update()
+    {
+        _telephoneCentral.OnUpdate();    
+    }
 
     public void NotifyShowCaller(int currentCaller)
     {
-        GameObject obj = Instantiate(PhoneUser);
+        GameObject obj = Instantiate(PhoneUserPrefab);
         GameplayScreen.PositionateUser(obj.GetComponent<RectTransform>());
 
         obj.GetComponent<PhoneUserView>().Initialize(_phoneUsers.users.FirstOrDefault(user => user.Id == currentCaller).CharacterSprite);

@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TelephoneCentral : MonoBehaviour
+public class TelephoneCentral
 {
-    public Board board;
-    public List<CallGroup> callGroups; 
+    private Board board;
+    private GameController gameController;
+    private PhoneUsers phoneUsers;
+
+    private List<CallGroup> callGroups; 
 
     private List<PhoneCall> phoneCalls = new List<PhoneCall>();
     private float phoneCallRate;
@@ -16,7 +19,35 @@ public class TelephoneCentral : MonoBehaviour
     private int phoneCallIndex;
     private PhoneCall currentPhoneCall;
 
-    public void InitializeRound(IEnumerable<PhoneCall> roundPhoneCalls, float roundPhoneCallRate, bool endlessRound = false)
+    public TelephoneCentral(GameController gameController, Board board, PhoneUsers phoneUsers)
+    {
+        this.board = board;
+        this.gameController = gameController;
+        this.phoneUsers = phoneUsers;
+
+        LoadCallGroups();
+    }
+
+    private void LoadCallGroups()
+    {
+        callGroups = new List<CallGroup>();
+
+        for (int i = 1; i < 5; i++)
+        {
+            var auxCallGroup = new CallGroup();
+            auxCallGroup.callers = phoneUsers.users.FindAll(user => user.CallGroup == i).Select(u => u.Id).ToList();
+            callGroups.Add(auxCallGroup);
+        }
+    }
+
+    public void InitializeGame()
+    {
+        board.SubscribeToReceptorEvent(ConnectCall);
+
+        InitializeRound(new List<PhoneCall> { new PhoneCall(1, 2), new PhoneCall(3, 4) }, 2, true);
+    }
+
+    private void InitializeRound(IEnumerable<PhoneCall> roundPhoneCalls, float roundPhoneCallRate, bool endlessRound = false)
     {
         phoneCallRate = roundPhoneCallRate;
         phoneCalls.Clear();
@@ -25,7 +56,7 @@ public class TelephoneCentral : MonoBehaviour
 
         if (endlessRound)
         {
-            StartCoroutine("GenerateCalls"); 
+            gameController.StartCoroutine(GenerateCalls());
         }
     }
 
@@ -58,25 +89,16 @@ public class TelephoneCentral : MonoBehaviour
 
     public void EndCalls()
     {
-        StopCoroutine("GenerateCalls");
+        gameController.StopCoroutine("GenerateCalls");
     }
 
-    private void Start()
-    {
-        board.SubscribeToReceptorEvent(ConnectCall);
-
-        InitializeRound(new List<PhoneCall> { new PhoneCall(1, 2), new PhoneCall(3, 4) }, 2, true);
-    }
-
-    private void Update()
+    public void OnUpdate()
     {
         var text = string.Empty;
         foreach (var call in phoneCalls.Where(x => !x.connected))
         {
             text += string.Format("Call from{0} to {1}{2}", call.caller, call.receiver, Environment.NewLine);
         }
-
-        Debug.Log(text);
 
         if (phoneCallIndex < phoneCalls.Count)
         {

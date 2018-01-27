@@ -17,7 +17,11 @@ public class PhoneUsers
 
         foreach(var userKey in json.keys)
         {
-            var user = new PhoneUser(userKey, Convert.ToInt32(json[userKey]["id"].f));
+            var id = Convert.ToInt32(json[userKey]["id"].f);
+            var callGroup = Convert.ToInt32(json[userKey]["callgroup"].f);
+
+            var user = new PhoneUser(userKey, id, callGroup);
+
             users.Add(user);
 
             for (int i = 0; i < 4; i++)

@@ -6,14 +6,16 @@ public class PhoneUser
     public string Name;
 	public int Id;
     public Sprite CharacterSprite;
+    public int CallGroup;
 
 	private Dictionary<int, JSONObject> roundTexts;
 
-    public PhoneUser (string name, int id)
+    public PhoneUser (string name, int id, int callGroup)
 	{
 		Name = name;
 		Id = id;
-        Debug.Log(name + " " + id);
+        CallGroup = callGroup;
+        //Debug.Log(name + " " + id + " " + callGroup);
 
 		roundTexts = new Dictionary<int, JSONObject>();
 

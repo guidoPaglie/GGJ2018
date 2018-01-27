@@ -1,32 +1,34 @@
 {
   "monja": {
     "id": 0,
+    "callgroup": 1,
     "round1": {
-      "inicio": "hola",
-      "r-positivo": "asada",
-      "r-neutral": "2"
+      "inicio": "Hello, I need to know how lil' orphan Mel is adapting to her new home.",
+      "r-positivo": "",
+      "r-neutral": "No, sweetie, this call is not for me."
     },
     "round2": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "",
+      "r-positivo": "Oh, Father, I think our little girl is fine now.",
+      "r-neutral": "Dear, I'm not the one you're looking for.",
+      "r-negativo": "Miss, I'm not expecting any calls other than God's right now."
     },
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "I need to speak to Bishop Lorenzo. I have a bad feeling about our girl.",
+      "r-positivo": "",
+      "r-neutral": "Don't get me worried! I was expecting another call.",
+      "r-negativo": "Good Lord! Stop passing me this calls."
     },
     "round4": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Bishop Lorenzo is not at home. Please, let me speak with the child!",
+      "r-positivo": "",
+      "r-neutral": "Holy ghost! I'm really nervous. Please, be more careful!",
+      "r-negativo": "You, sinner! Burn in hell!"
     }
   },
   "milico": {
     "id": 1,
+    "callgroup": 4,
     "round1": {
       "inicio": "hola",
       "r-positivo": "asada",
@@ -53,6 +55,7 @@
   },
   "viuda": {
     "id": 4,
+    "callgroup": 3,
     "round1": {
       "inicio": "hola",
       "r-positivo": "asada",
@@ -79,6 +82,7 @@
   },
   "carnicero": {
     "id": 5,
+    "callgroup": 2,
     "round1": {
       "inicio": "hola",
       "r-positivo": "asada",
@@ -105,6 +109,7 @@
   },
   "ninita": {
     "id": 11,
+    "callgroup": 1,
     "round1": {
       "inicio": "hola",
       "r-positivo": "asada",
@@ -124,13 +129,17 @@
     },
     "round4": {
       "inicio": "hola",
-      "r-positivo": "dssdfs",
+      "r-positivo": {
+        "12": "dsfsdf",
+        "9": "sdasdas"
+      },
       "r-neutral": "meh",
       "r-negativo": "lcdtm"
     }
   },
   "galan": {
     "id": 15,
+    "callgroup": 2,
     "round1": {
       "inicio": "hola",
       "r-positivo": "asada",
@@ -157,9 +166,13 @@
   },
   "doctor": {
     "id": 10,
+    "callgroup": 3,
     "round1": {
       "inicio": "hola",
-      "r-positivo": "asada",
+      "r-positivo": {
+        "2": "dsfsdf",
+        "8": "sdasdas"
+      },
       "r-neutral": "2"
     },
     "round2": {
@@ -183,6 +196,7 @@
   },
   "adolescente": {
     "id": 14,
+    "callgroup": 4,
     "round1": {
       "inicio": "hola",
       "r-positivo": "asada",
@@ -209,6 +223,7 @@
   },
   "cura": {
     "id": 9,
+    "callgroup": 1,
     "round2": {
       "inicio": "hola",
       "r-positivo": "dssdfs",
@@ -230,27 +245,35 @@
   },
   "prostituta": {
     "id": 13,
+    "callgroup": 2,
     "round2": {
       "inicio": "hola",
-      "r-positivo": "dssdfs",
+      "r-positivo": {
+        "15": "dsfsdf",
+        "5": "sdasdas"
+      },
       "r-neutral": "meh",
       "r-negativo": "lcdtm"
     },
     "round3": {
       "inicio": "hola",
-      "r-positivo": "dssdfs",
+      "r-positivo": "dsfsdfsd",
       "r-neutral": "meh",
       "r-negativo": "lcdtm"
     },
     "round4": {
       "inicio": "hola",
-      "r-positivo": "dssdfs",
+      "r-positivo": {
+        "5": "dsfsdf",
+        "6": "sdasdas"
+      },
       "r-neutral": "meh",
       "r-negativo": "lcdtm"
     }
   },
   "viejo": {
     "id": 2,
+    "callgroup": 3,
     "round2": {
       "inicio": "hola",
       "r-positivo": "dssdfs",
@@ -272,6 +295,7 @@
   },
   "mafioso": {
     "id": 3,
+    "callgroup": 4,
     "round2": {
       "inicio": "hola",
       "r-positivo": "dssdfs",
@@ -286,13 +310,17 @@
     },
     "round4": {
       "inicio": "hola",
-      "r-positivo": "dssdfs",
+      "r-positivo": {
+        "1": "dsfsdf",
+        "7": "sdasdas"
+      },
       "r-neutral": "meh",
       "r-negativo": "lcdtm"
     }
   },
   "payaso": {
     "id": 12,
+    "callgroup": 1,
     "round3": {
       "inicio": "hola",
       "r-positivo": "dssdfs",
@@ -308,9 +336,13 @@
   },
   "enano": {
     "id": 6,
+    "callgroup": 2,
     "round3": {
       "inicio": "hola",
-      "r-positivo": "dssdfs",
+      "r-positivo": {
+        "13": "dsfsdf",
+        "15": "sdasdas"
+      },
       "r-neutral": "meh",
       "r-negativo": "lcdtm"
     },
@@ -323,6 +355,7 @@
   },
   "medium": {
     "id": 8,
+    "callgroup": 3,
     "round3": {
       "inicio": "hola",
       "r-positivo": "dssdfs",
@@ -338,6 +371,7 @@
   },
   "hobbo": {
     "id": 7,
+    "callgroup": 4,
     "round3": {
       "inicio": "hola",
       "r-positivo": "dssdfs",
