@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    public static float TimerPeopleTalking = 1.0f;
+
     public Board Board;
     public GameplayScreen GameplayScreen;
     public StressController StressController;
@@ -23,7 +25,7 @@ public class GameController : MonoBehaviour {
 
         _telephoneCentral = new TelephoneCentral(this, Board, StressController, _phoneUsers);
 
-        _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], 0.5f, false);
+        _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], 1.5f, false);
     }
 
     private void Update()

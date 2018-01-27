@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class TelephoneCentral
 {
+    public static TelephoneCentral Instance;
+
     private Board board;
     private StressController stressController;
     private GameController gameController;
@@ -22,12 +24,14 @@ public class TelephoneCentral
 
     public TelephoneCentral(GameController gameController, Board board, StressController stressController, PhoneUsers phoneUsers)
     {
+        Instance = this;
+
         this.board = board;
         this.stressController = stressController;
         this.gameController = gameController;
         this.phoneUsers = phoneUsers;
 
-        board.SubscribeToReceptorEvent(ConnectCall);
+        board.SubscribeToJabEvent(ConnectCall);
         stressController.OnStressPeak += EndCalls;
 
         LoadCallGroups();
@@ -73,7 +77,6 @@ public class TelephoneCentral
             else if (currentPhoneCall.receiver == receptorId)
             {
                 currentPhoneCall.connected = true;
-                board.CallCompleted(currentPhoneCall.caller, currentPhoneCall.receiver);
                 stressController.EndCall(phoneCalls.IndexOf(currentPhoneCall));
                 gameController.CallCompleted(currentPhoneCall.caller, receptorId);
                 currentPhoneCall = null;
@@ -168,5 +171,10 @@ public class TelephoneCentral
         } while (callerId == receiverId);
 
         return new PhoneCall(callerId, receiverId);
+    }
+
+    public bool HasCurrentCall()
+    {
+        return Instance.currentPhoneCall != null ;
     }
 }

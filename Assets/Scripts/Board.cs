@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Board : MonoBehaviour {
 
-	public GameObject Receptor;
+	public GameObject JabPrefab;
 
 	public int Rows;
 	public int Cols;
@@ -15,10 +15,10 @@ public class Board : MonoBehaviour {
 	{
 		board = new List<Jab>();
 
-        InstantiateReceptors ();
+        InstantiateJabs ();
 	}
 
-    void InstantiateReceptors ()
+    void InstantiateJabs ()
 	{
         int id = 0;
 
@@ -26,17 +26,17 @@ public class Board : MonoBehaviour {
 		{
 			for (int j = 0; j < Rows; j++) 
 			{
-				Vector2 pos = new Vector2 (j * 1, i * -1);
-				Jab newReceptor = Instantiate (Receptor, pos, Quaternion.identity, this.transform).GetComponent<Jab>();
-                newReceptor.Initialize(id);
-				board.Add(newReceptor);
-
+				Vector2 pos = new Vector2 (j * 2.0f, i * -1.20f);
+                Jab newJab = Instantiate (JabPrefab, pos, Quaternion.identity).GetComponent<Jab>();
+                newJab.Initialize(id);
+				board.Add(newJab);
+                newJab.gameObject.transform.SetParent(this.transform, false);
                 id++;
 			}
 		}	
 	}
 
-    public void SubscribeToReceptorEvent(Jab.ReceptorSelected callback)
+    public void SubscribeToJabEvent(Jab.ReceptorSelected callback)
     {
         foreach (var receptor in board)
         {

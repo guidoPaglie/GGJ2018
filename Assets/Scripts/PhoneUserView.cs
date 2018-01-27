@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class PhoneUserView : MonoBehaviour {
 
     public Image MyImage;
+    [HideInInspector]
     public bool inUse = false;
+    [HideInInspector]
     public int id;
 
-	public void SetUser (Sprite sprite, int id) {
+	public void SetUser (Sprite sprite, int id) 
+    {
         this.id = id;
 
         inUse = true;

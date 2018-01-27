@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyConnector: {fileID: 212500004830273206}
   MyLight: {fileID: 1407910930413002}
+  timeJabErrorOn: 1
 --- !u!212 &212500004830273206
 SpriteRenderer:
   m_ObjectHideFlags: 1

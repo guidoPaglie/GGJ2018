@@ -8,11 +8,10 @@ using System.Linq;
 public class GameplayScreen : MonoBehaviour
 {
     public Button BackBtn;
+    public Board Board;
 
     public List<PhoneUserView> CallersContainer;
     public List<PhoneUserView> ReceiversContainer;
-
-    public float TimerPeopleTalking = 2.0f;
 
     public void Start()
     {
@@ -38,9 +37,11 @@ public class GameplayScreen : MonoBehaviour
     {
         ReceiversContainer.FirstOrDefault(user => !user.inUse).SetUser(receiver.CharacterSprite, receiver.Id);
 
-        yield return new WaitForSeconds(TimerPeopleTalking);
+        yield return new WaitForSeconds(GameController.TimerPeopleTalking);
 
         CallersContainer.FirstOrDefault(user => user.id == caller.Id).Reset();
         ReceiversContainer.FirstOrDefault(user => user.id == receiver.Id).Reset();
+
+        Board.CallCompleted(caller.Id, receiver.Id);
     }
 }
