@@ -17,7 +17,7 @@ public class GameplayScreen : MonoBehaviour
     public List<PhoneUserView> CallersContainer;
     public List<PhoneUserView> ReceiversContainer;
 
-    public void StartRound(bool visible)
+    public void SetScreenVisibility(bool visible)
     {
         Callers.SetActive(visible);    
         Receivers.SetActive(visible);

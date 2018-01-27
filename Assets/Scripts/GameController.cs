@@ -14,8 +14,8 @@ public enum GameState
 
 public class GameController : MonoBehaviour {
 
-    public static float TIME_PEOPLE_TALKING = 1.0f;
-    public static float TIME_BETWEEN_ROUNDS = 1.0f;
+    public static float TIME_PEOPLE_TALKING = 0.2f;
+    public static float TIME_BETWEEN_ROUNDS = 0.2f;
 
     public Board Board;
     public GameplayScreen GameplayScreen;
@@ -77,7 +77,7 @@ public class GameController : MonoBehaviour {
     {
         yield return new WaitForSeconds(endOfRound);
 
-        GameplayScreen.StartRound(false);
+        GameplayScreen.SetScreenVisibility(false);
 
         RoundSprite.gameObject.SetActive(true);
         RoundSprite.sprite = RoundSprites[_currentRound];
@@ -87,7 +87,8 @@ public class GameController : MonoBehaviour {
         RoundSprite.gameObject.SetActive(false);
         currentGameState = GameState.PLAYING;
 
-        GameplayScreen.StartRound(true);
+        GameplayScreen.SetScreenVisibility(true);
+
         _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], 0.5f, false);
     }
 
