@@ -32,6 +32,7 @@ public class TelephoneCentral : MonoBehaviour
             else if (currentPhoneCall.receiver == receptorId)
             {
                 currentPhoneCall.connected = true;
+                board.CallCompleted(currentPhoneCall.caller, currentPhoneCall.receiver);
                 currentPhoneCall = null;
                 return true;
             }
@@ -44,7 +45,7 @@ public class TelephoneCentral : MonoBehaviour
 
     public void NotifyIncomingCall(PhoneCall phoneCall)
     {
-        board.IncomingCall(phoneCall.caller, phoneCall.receiver);
+        board.IncomingCall(phoneCall.caller);
     }
 
     private void Update()
