@@ -1,16 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class Game : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	public Board board;
+
+	void Start () 
+	{
+        StartCoroutine(NotifyIncomingCall());
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    private IEnumerator NotifyIncomingCall()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        var caller = Random.Range(0, 10);
+        var receiver = 12;
+
+        board.IncomingCall(caller, receiver);
+    }
 }
