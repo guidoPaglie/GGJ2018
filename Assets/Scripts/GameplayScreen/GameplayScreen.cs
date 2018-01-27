@@ -8,21 +8,17 @@ public class GameplayScreen : MonoBehaviour
 {
     public Board Board;
 
-    public GameObject Callers;
-    public GameObject Receivers;
-    public GameObject StressGauge;
+    public GameObject Panel;
 
-    public Text MessageText;
+    public Text CallerMsg;
+    public Text ReceiverMsg;
 
     public List<PhoneUserView> CallersContainer;
     public List<PhoneUserView> ReceiversContainer;
 
     public void SetScreenVisibility(bool visible)
     {
-        Callers.SetActive(visible);    
-        Receivers.SetActive(visible);
-        StressGauge.SetActive(visible);
-        MessageText.gameObject.SetActive(visible);
+        Panel.SetActive(visible);
     }
 
     public void PositionateUserWithSprite(PhoneUser caller, int id)
