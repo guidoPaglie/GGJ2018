@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TelephoneCentral : MonoBehaviour
 {
-    public Game gameManager;
+    public Board board;
 
     private List<PhoneCall> phoneCalls;
     private float phoneCallRate;
@@ -44,7 +44,7 @@ public class TelephoneCentral : MonoBehaviour
 
     public void NotifyIncomingCall(PhoneCall phoneCall)
     {
-        gameManager.NotifyIncomingCall(phoneCall.caller, phoneCall.receiver);
+        board.IncomingCall(phoneCall.caller, phoneCall.receiver);
     }
 
     private void Update()
@@ -65,7 +65,7 @@ public class TelephoneCentral : MonoBehaviour
 
         if (phoneCalls.Count(x => x.connected) == phoneCalls.Count)
         {
-            gameManager.NotifyEndOfRound();
+            //board.NotifyEndOfRound();
         }
     }
 }
