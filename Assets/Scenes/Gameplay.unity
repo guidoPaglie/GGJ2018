@@ -694,8 +694,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Board: {fileID: 180608465}
   GameplayScreen: {fileID: 1363324603}
-  PhoneUserPrefab: {fileID: 1139203448913342, guid: dd489b25ed9ae497b931d31706e66be4,
-    type: 2}
 --- !u!4 &571806863
 Transform:
   m_ObjectHideFlags: 0
