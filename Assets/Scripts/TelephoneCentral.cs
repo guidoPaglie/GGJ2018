@@ -7,6 +7,7 @@ using UnityEngine;
 public class TelephoneCentral : MonoBehaviour
 {
     public Board board;
+    public List<CallGroup> callGroups; 
 
     private List<PhoneCall> phoneCalls = new List<PhoneCall>();
     private float phoneCallRate;
@@ -21,7 +22,11 @@ public class TelephoneCentral : MonoBehaviour
         phoneCalls.Clear();
         
         phoneCalls.AddRange(roundPhoneCalls);
-        StartCoroutine(GenerateCalls());
+
+        if (endlessRound)
+        {
+            StartCoroutine("GenerateCalls"); 
+        }
     }
 
     public bool ConnectCall(int receptorId)
@@ -51,6 +56,11 @@ public class TelephoneCentral : MonoBehaviour
         board.IncomingCall(phoneCall.caller);
     }
 
+    public void EndCalls()
+    {
+        StopCoroutine("GenerateCalls");
+    }
+
     private void Start()
     {
         board.SubscribeToReceptorEvent(ConnectCall);
@@ -60,6 +70,14 @@ public class TelephoneCentral : MonoBehaviour
 
     private void Update()
     {
+        var text = string.Empty;
+        foreach (var call in phoneCalls.Where(x => !x.connected))
+        {
+            text += string.Format("Call from{0} to {1}{2}", call.caller, call.receiver, Environment.NewLine);
+        }
+
+        Debug.Log(text);
+
         if (phoneCallIndex < phoneCalls.Count)
         {
             phoneCallRateTimer -= Time.deltaTime;
@@ -88,28 +106,35 @@ public class TelephoneCentral : MonoBehaviour
 
     private IEnumerator GenerateCalls()
     {
-        // NOTE: Test
-        phoneCalls.Add(CreateRandomPhoneCall());
-        phoneCalls.Add(CreateRandomPhoneCall());
-        phoneCalls.Add(CreateRandomPhoneCall());
-        phoneCalls.Add(CreateRandomPhoneCall());
-        phoneCalls.Add(CreateRandomPhoneCall());
-
         while (true)
         {
-            phoneCalls.Add(CreateRandomPhoneCall());
+            if (phoneCalls.Count(x => !x.connected) < 8)
+            {
+                phoneCalls.Add(CreateRandomPhoneCall()); 
+            }
 
             yield return new WaitForSeconds(0.5f);
         }
     }
 
-    private static PhoneCall CreateRandomPhoneCall()
+    private PhoneCall CreateRandomPhoneCall()
     {
-        var callerId = UnityEngine.Random.Range(0, 16);
-        var receiverId = UnityEngine.Random.Range(0, 16);
+        int callerId;
+        int receiverId;
+        
+        do
+        {
+            callerId = UnityEngine.Random.Range(0, 16);
+        } while (phoneCalls.Skip(phoneCalls.Count - 6).All(x => !x.connected && (x.caller == callerId || x.receiver == callerId)));
 
-        // TODO: Get the correct receiverId based on callerId
 
-        return new PhoneCall(callerId, callerId == receiverId ? receiverId + 1 : receiverId);
+        var callGroup = callGroups.FirstOrDefault(x => x.callers.Contains(callerId));
+        
+        do
+        {
+            receiverId = callGroup.callers[UnityEngine.Random.Range(0, callGroup.callers.Count)];
+        } while (callerId == receiverId);
+
+        return new PhoneCall(callerId, receiverId);
     }
 }
