@@ -6,9 +6,9 @@ public class TelephoneCentral : MonoBehaviour
 {
     public Board board;
 
-    private List<PhoneCall> phoneCalls;
+    private List<PhoneCall> phoneCalls = new List<PhoneCall>();
     private float phoneCallRate;
-    private float phoneCallRateTimer;
+    private float phoneCallRateTimer = 1;
 
     private int phoneCallIndex;
     private PhoneCall currentPhoneCall;
@@ -21,7 +21,7 @@ public class TelephoneCentral : MonoBehaviour
         phoneCalls.AddRange(roundPhoneCalls);
     }
 
-    public bool ConnectCall(int receptorId)
+    public void ConnectCall(int receptorId)
     {
         if (phoneCalls.Count(x => !x.connected) > 0)
         {
@@ -34,18 +34,20 @@ public class TelephoneCentral : MonoBehaviour
                 currentPhoneCall.connected = true;
                 board.CallCompleted(currentPhoneCall.caller, currentPhoneCall.receiver);
                 currentPhoneCall = null;
-                return true;
             }
-
-            return false;
         }
-
-        return true;
     }
 
     public void NotifyIncomingCall(PhoneCall phoneCall)
     {
         board.IncomingCall(phoneCall.caller);
+    }
+
+    private void Start()
+    {
+        board.SubscribeToReceptorEvent(ConnectCall);
+
+        InitializeRound(new List<PhoneCall> { new PhoneCall(1, 2), new PhoneCall(3, 4) }, 2);
     }
 
     private void Update()

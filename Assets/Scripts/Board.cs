@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Board : MonoBehaviour {
 
@@ -35,6 +36,14 @@ public class Board : MonoBehaviour {
 			}
 		}	
 	}
+
+    public void SubscribeToReceptorEvent(Action<int> callback)
+    {
+        foreach (var receptor in board)
+        {
+            receptor.OnReceptorSelected += callback;
+        }
+    }
 
     public void IncomingCall (int caller)
 	{

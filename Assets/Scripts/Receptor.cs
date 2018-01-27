@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class Receptor : MonoBehaviour 
 {
@@ -9,6 +10,8 @@ public class Receptor : MonoBehaviour
 
     private bool _isCaller;
     private bool _isConnected;
+    
+    public event Action<int> OnReceptorSelected = delegate { };
 
     public void Initialize(int id)
     {
@@ -31,10 +34,8 @@ public class Receptor : MonoBehaviour
                 MyConnector.color = Color.red;
             }
         }
-        else
-        {
-            // TelephoneCentral.OnTryCallConnection(Id);
-        }
+
+        OnReceptorSelected(Id);
     }
 
     public void Reset()
