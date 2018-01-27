@@ -7,8 +7,10 @@ public class GameplayScreen : MonoBehaviour
 {
     public Button BackBtn;
 
-    public List<Transform> CallersContainer;
-    public List<Transform> ReceiversContainer;
+    public List<PhoneUserView> CallersContainer;
+    public List<PhoneUserView> ReceiversContainer;
+
+    private int callersCount;
 
     public void Start()
     {
@@ -20,9 +22,8 @@ public class GameplayScreen : MonoBehaviour
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
-    public void PositionateUser(RectTransform obj)
+    public void PositionateUserWithSprite(Sprite sprite)
     {
-        obj.transform.SetParent(CallersContainer[0]);
-        obj.anchoredPosition = Vector3.zero;
+        CallersContainer[callersCount].Initialize(sprite);
     }
 }

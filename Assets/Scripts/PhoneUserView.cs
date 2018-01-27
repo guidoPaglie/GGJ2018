@@ -9,9 +9,6 @@ public class PhoneUserView : MonoBehaviour {
 
 	public void Initialize (Sprite sprite) {
         MyImage.sprite = sprite;
-	}
-	
-	void Update () {
-		
+        MyImage.gameObject.SetActive(true);
 	}
 }

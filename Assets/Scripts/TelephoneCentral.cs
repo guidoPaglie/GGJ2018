@@ -9,7 +9,6 @@ public class TelephoneCentral
     private Board board;
     private GameController gameController;
     private PhoneUsers phoneUsers;
-    private PhoneCallsHarcode phoneCallsHarcoded;
 
     private List<CallGroup> callGroups; 
 
@@ -25,7 +24,8 @@ public class TelephoneCentral
         this.board = board;
         this.gameController = gameController;
         this.phoneUsers = phoneUsers;
-        this.phoneCallsHarcoded = new PhoneCallsHarcode();
+
+        board.SubscribeToReceptorEvent(ConnectCall);
 
         LoadCallGroups();
     }
@@ -42,14 +42,7 @@ public class TelephoneCentral
         }
     }
 
-    public void InitializeGame()
-    {
-        board.SubscribeToReceptorEvent(ConnectCall);
-
-        InitializeRound(phoneCallsHarcoded.phoneCalls[GameController.CurrentRound], 2, true);
-    }
-
-    private void InitializeRound(IEnumerable<PhoneCall> roundPhoneCalls, float roundPhoneCallRate, bool endlessRound = false)
+    public void InitializeRound(IEnumerable<PhoneCall> roundPhoneCalls, float roundPhoneCallRate, bool endlessRound = false)
     {
         phoneCallRate = roundPhoneCallRate;
         phoneCalls.Clear();
@@ -69,13 +62,17 @@ public class TelephoneCentral
             if (currentPhoneCall == null)
             {
                 currentPhoneCall = phoneCalls.Take(phoneCallIndex).FirstOrDefault(x => !x.connected && x.caller == receptorId);
-                gameController.NotifyShowCaller(currentPhoneCall.caller);
+
+                if (currentPhoneCall != null)
+                    gameController.NotifyShowCaller(currentPhoneCall.caller);
+                
                 return true;
             }
             else if (currentPhoneCall.receiver == receptorId)
             {
                 currentPhoneCall.connected = true;
                 board.CallCompleted(currentPhoneCall.caller, currentPhoneCall.receiver);
+                gameController.CallCompleted();
                 currentPhoneCall = null;
                 return true;
             }
@@ -117,7 +114,10 @@ public class TelephoneCentral
 
         if (phoneCalls.Count(x => x.connected) == phoneCalls.Count)
         {
+            EndCalls();
+            phoneCallIndex = 0;
             gameController.NotifyEndOfRound();
+            Debug.Log("end of round");
         }
     }
 
@@ -134,7 +134,7 @@ public class TelephoneCentral
         {
             if (phoneCalls.Count(x => !x.connected) < 8)
             {
-                phoneCalls.Add(CreateRandomPhoneCall()); 
+                phoneCalls.Add(CreateRandomPhoneCall());
             }
 
             yield return new WaitForSeconds(0.5f);
