@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -13,7 +14,8 @@ public enum GameState
 
 public class GameController : MonoBehaviour {
 
-    public static float TimerPeopleTalking = 1.0f;
+    public static float TIME_PEOPLE_TALKING = 0.2f;
+    public static float TIME_BETWEEN_ROUNDS = 0.2f;
 
     public float[] startStressLevel = new float[] { 0, 15, 25, 50 };
     public float[] maxStressLevel = new float[] { 45, 60, 85, 100 };
@@ -31,6 +33,9 @@ public class GameController : MonoBehaviour {
 
     private GameState currentGameState = GameState.NOT_PLAYING;
 
+    public List<Sprite> RoundSprites;
+    public SpriteRenderer RoundSprite;
+
     void Start () 
     {
         _phoneUsers = new PhoneUsers();
@@ -38,7 +43,7 @@ public class GameController : MonoBehaviour {
 
         _telephoneCentral = new TelephoneCentral(this, Board, StressController, _phoneUsers);
 
-        StartRound();
+        StartCoroutine(StartRound(0.0f, TIME_BETWEEN_ROUNDS));
     }
 
     private void Update()
@@ -68,18 +73,26 @@ public class GameController : MonoBehaviour {
         _currentRound++;
 
         currentGameState = GameState.END_OF_ROUND;
-        StartCoroutine(Testing());
+
+        StartCoroutine(StartRound(TIME_PEOPLE_TALKING, TIME_BETWEEN_ROUNDS));
     }
 
-    private IEnumerator Testing()
+    private IEnumerator StartRound(float endOfRound, float difRound)
     {
-        yield return new WaitForSeconds(5.0f);
-        StartRound();
-    }
+        yield return new WaitForSeconds(endOfRound);
 
-    private void StartRound()
-    {
+        GameplayScreen.SetScreenVisibility(false);
+
+        RoundSprite.gameObject.SetActive(true);
+        RoundSprite.sprite = RoundSprites[_currentRound];
+
+        yield return new WaitForSeconds(difRound);
+
+        RoundSprite.gameObject.SetActive(false);
         currentGameState = GameState.PLAYING;
+
+        GameplayScreen.SetScreenVisibility(true);
+
         _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], phoneRates[_currentRound], _currentRound == _phoneCallsHarcoded.phoneCalls.Count - 1);
         StressController.SetupStresslevels(startStressLevel[_currentRound], maxStressLevel[_currentRound]);
     }

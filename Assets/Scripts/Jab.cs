@@ -46,7 +46,7 @@ public class Jab : MonoBehaviour
     private IEnumerator WrongJab()
     {
         yield return new WaitForSeconds(timeJabErrorOn);
-        Reset();
+        MyConnector.color = Color.white;
     }
 
     public void Reset()
