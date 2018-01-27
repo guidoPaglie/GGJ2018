@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 
 public class GameplayScreen : MonoBehaviour
 {
@@ -10,7 +12,7 @@ public class GameplayScreen : MonoBehaviour
     public List<PhoneUserView> CallersContainer;
     public List<PhoneUserView> ReceiversContainer;
 
-    private int callersCount;
+    public float TimerPeopleTalking = 2.0f;
 
     public void Start()
     {
@@ -22,8 +24,23 @@ public class GameplayScreen : MonoBehaviour
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
-    public void PositionateUserWithSprite(Sprite sprite)
+    public void PositionateUserWithSprite(PhoneUser caller, int id)
     {
-        CallersContainer[callersCount].Initialize(sprite);
+        CallersContainer.FirstOrDefault(user => !user.inUse).SetUser(caller.CharacterSprite, id);
+    }
+
+    public void CallCompleted(PhoneUser caller, PhoneUser receiver)
+    {
+        StartCoroutine(CallerAndReceivingTalking(caller, receiver));
+    }
+
+    private IEnumerator CallerAndReceivingTalking(PhoneUser caller, PhoneUser receiver)
+    {
+        ReceiversContainer.FirstOrDefault(user => !user.inUse).SetUser(receiver.CharacterSprite, receiver.Id);
+
+        yield return new WaitForSeconds(TimerPeopleTalking);
+
+        CallersContainer.FirstOrDefault(user => user.id == caller.Id).Reset();
+        ReceiversContainer.FirstOrDefault(user => user.id == receiver.Id).Reset();
     }
 }

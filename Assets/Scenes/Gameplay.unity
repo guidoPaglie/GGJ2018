@@ -1254,6 +1254,7 @@ MonoBehaviour:
   - {fileID: 1206110715}
   - {fileID: 1902039245}
   - {fileID: 1713958358}
+  TimerPeopleTalking: 2
 --- !u!1001 &1487063715
 Prefab:
   m_ObjectHideFlags: 0

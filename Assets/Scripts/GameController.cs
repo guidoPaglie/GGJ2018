@@ -1,21 +1,19 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-    public static int CurrentRound = 0;
-
     public Board Board;
     public GameplayScreen GameplayScreen;
     public StressController StressController;
-
-    public GameObject PhoneUserPrefab;
 
     private TelephoneCentral _telephoneCentral;
     private PhoneUsers _phoneUsers;
     private PhoneCallsHarcode _phoneCallsHarcoded;
 
+    private int _currentRound;
     private bool norahIsAlive = true;
 
     void Start () 
@@ -25,8 +23,8 @@ public class GameController : MonoBehaviour {
 
         _telephoneCentral = new TelephoneCentral(this, Board, StressController, _phoneUsers);
 
-        _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[CurrentRound], 0.5f, false);
-	}
+        _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], 0.5f, false);
+    }
 
     private void Update()
     {
@@ -38,18 +36,22 @@ public class GameController : MonoBehaviour {
 
     public void NotifyShowCaller(int currentCaller)
     {
-        GameplayScreen.PositionateUserWithSprite(_phoneUsers.users.FirstOrDefault(user => user.Id == currentCaller).CharacterSprite);
+        var caller = _phoneUsers.users.FirstOrDefault(user => user.Id == currentCaller);
+        GameplayScreen.PositionateUserWithSprite(caller, currentCaller);
     }
 
-    public void CallCompleted()
+    public void CallCompleted(int callerId, int receiverId)
     {
-        
+        var caller = _phoneUsers.users.FirstOrDefault(user => user.Id == callerId);
+        var receiver = _phoneUsers.users.FirstOrDefault(user => user.Id == receiverId);
+        GameplayScreen.CallCompleted(caller, receiver);
     }
 
     public void NotifyEndOfRound()
     {
-        CurrentRound++;
-        _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[CurrentRound], 0.5f, false);
+        _currentRound++;
+
+        _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], 0.5f, false);
     }
 
     public void NotifyGameOver()
