@@ -9,9 +9,7 @@ public class Jab : MonoBehaviour
     public float timeJabErrorOn = 1.0f;
 
     public int Id { get; private set; }
-
-    private bool _isCaller;
-
+    
     public delegate ConnectionResult ReceptorSelected(int id);
     public event ReceptorSelected OnReceptorSelected;
 
@@ -22,7 +20,6 @@ public class Jab : MonoBehaviour
 
     public void IncomingCall()
 	{
-        _isCaller = true;
         MyLight.SetActive(true);
 	}
 
@@ -51,7 +48,6 @@ public class Jab : MonoBehaviour
 
     public void Reset()
     {
-        _isCaller = false;
         MyLight.SetActive(false);
         MyConnector.color = Color.white;
     }
