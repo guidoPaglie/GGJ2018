@@ -136,9 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Connector: {fileID: 1226285651578654, guid: 5426194e8e0484bdd8560988fa0ced2e, type: 2}
-  gridLayout: {fileID: 0}
-  Rows: 0
-  Cols: 0
+  Rows: 4
+  Cols: 4
+  offsetBetweenConnectors: 1.5
 --- !u!4 &180608466
 Transform:
   m_ObjectHideFlags: 0

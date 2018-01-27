@@ -10,6 +10,8 @@ public class Board : MonoBehaviour {
 	public int Rows;
 	public int Cols;
 
+	public float offsetBetweenConnectors;
+
 	private RectTransform myRT;
 	private GameObject[,] board;
 
@@ -17,18 +19,19 @@ public class Board : MonoBehaviour {
 	{
 		board = new GameObject[Rows, Cols];
 
-		for (int i = 0; i < Rows; i++) 
-		{
-			for (int j = 0; j < Cols; j++) 
-			{
-				GameObject obj = Instantiate (Connector, Vector3.zero, Quaternion.identity, this.transform);
-				board [i, j] = obj;
-			}
-		}
+		InstantiateViewConnectors ();
 	}
-	
-	void Update ()
+
+	void InstantiateViewConnectors ()
 	{
-		
+		for (int i = 0; i < Cols; i++) 
+		{
+			for (int j = 0; j < Rows; j++) 
+			{
+				Vector2 pos = new Vector2 (i * offsetBetweenConnectors - Cols/2, j * offsetBetweenConnectors - Rows/2);
+				GameObject obj = Instantiate (Connector, pos, Quaternion.identity, this.transform);
+				board [j, i] = obj;
+			}
+		}	
 	}
 }
