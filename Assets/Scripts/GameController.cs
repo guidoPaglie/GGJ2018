@@ -1,20 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Linq;
 
 public class GameController : MonoBehaviour {
 
-	public GameObject PhoneUser;
+    public GameplayScreen GameplayScreen;
 
-    private PhoneUsersLoader phoneUserLoader;
+    public GameObject PhoneUser;
+    public TelephoneCentral TelephoneCentral;
+
+    private GameObject _currentCaller;
+    private GameObject _currentReceiver;
+
+    private PhoneUsers _phoneUsers;
 
 	void Start () 
     {
-        phoneUserLoader = new PhoneUsersLoader();	
+        _phoneUsers = new PhoneUsers();	
+
+        TelephoneCentral.Initialize();
 	}
-	
-	void Update () 
+
+    public void NotifyShowCaller(int currentCaller)
     {
-		
-	}
+        GameObject obj = Instantiate(PhoneUser);
+        GameplayScreen.PositionateUser(obj.GetComponent<RectTransform>());
+
+        obj.GetComponent<PhoneUserView>().Initialize(_phoneUsers.users.FirstOrDefault(user => user.Id == currentCaller).CharacterSprite);
+    }
+
+    public void NotifyEndOfRound()
+    {
+        
+    }
 }

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 61320433195018280}
   - component: {fileID: 114185816772688648}
   m_Layer: 0
-  m_Name: Receptor
+  m_Name: Jab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
