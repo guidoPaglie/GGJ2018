@@ -28,17 +28,22 @@ public class Board : MonoBehaviour {
 			{
 				Vector2 pos = new Vector2 (i * 1, j * 1);
 				Receptor newReceptor = Instantiate (Receptor, pos, Quaternion.identity, this.transform).GetComponent<Receptor>();
-
                 newReceptor.Initialize(id);
-                id++;
-
 				board.Add(newReceptor);
+
+                id++;
 			}
 		}	
 	}
 
-    public void IncomingCall (int caller, int receiver)
+    public void IncomingCall (int caller)
 	{
-        board.FirstOrDefault(receptor => receptor.Id == caller).TurnLightOn();
+        board.FirstOrDefault(receptor => receptor.Id == caller).IncomingCall();
 	}
+
+    public void CallCompleted(int caller, int receiver)
+    {
+        board.FirstOrDefault(receptor => receptor.Id == caller).Reset();
+        board.FirstOrDefault(receptor => receptor.Id == receiver).Reset();
+    }
 }
