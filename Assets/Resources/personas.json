@@ -1,0 +1,354 @@
+{
+  "monja": {
+    "id": 0,
+    "round1": {
+      "inicio": "hola",
+      "r-positivo": "asada",
+      "r-neutral": "2"
+    },
+    "round2": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "milico": {
+    "id": 1,
+    "round1": {
+      "inicio": "hola",
+      "r-positivo": "asada",
+      "r-neutral": "2"
+    },
+    "round2": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "viuda": {
+    "id": 4,
+    "round1": {
+      "inicio": "hola",
+      "r-positivo": "asada",
+      "r-neutral": "2"
+    },
+    "round2": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "carnicero": {
+    "id": 5,
+    "round1": {
+      "inicio": "hola",
+      "r-positivo": "asada",
+      "r-neutral": "2"
+    },
+    "round2": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "ninita": {
+    "id": 11,
+    "round1": {
+      "inicio": "hola",
+      "r-positivo": "asada",
+      "r-neutral": "2"
+    },
+    "round2": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "galan": {
+    "id": 15,
+    "round1": {
+      "inicio": "hola",
+      "r-positivo": "asada",
+      "r-neutral": "2"
+    },
+    "round2": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "doctor": {
+    "id": 10,
+    "round1": {
+      "inicio": "hola",
+      "r-positivo": "asada",
+      "r-neutral": "2"
+    },
+    "round2": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "adolescente": {
+    "id": 14,
+    "round1": {
+      "inicio": "hola",
+      "r-positivo": "asada",
+      "r-neutral": "2"
+    },
+    "round2": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "cura": {
+    "id": 9,
+    "round2": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "prostituta": {
+    "id": 13,
+    "round2": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "viejo": {
+    "id": 2,
+    "round2": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "mafioso": {
+    "id": 3,
+    "round2": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "payaso": {
+    "id": 12,
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "enano": {
+    "id": 6,
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "medium": {
+    "id": 8,
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  },
+  "hobbo": {
+    "id": 7,
+    "round3": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    },
+    "round4": {
+      "inicio": "hola",
+      "r-positivo": "dssdfs",
+      "r-neutral": "meh",
+      "r-negativo": "lcdtm"
+    }
+  }
+}
