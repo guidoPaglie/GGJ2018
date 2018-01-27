@@ -17,10 +17,17 @@ public class StressController : MonoBehaviour
     public float angleMax;
     
     private float stressLevel;
+    private float currentMaxStressLevel;
     private Dictionary<int, PendingCall> pendingCalls = new Dictionary<int, PendingCall>();
 
     public delegate void StressPeak();
     public event StressPeak OnStressPeak;
+
+    public void SetupStresslevels(float startLevel, float maxLevel)
+    {
+        stressLevel = startLevel;
+        currentMaxStressLevel = maxLevel;
+    }
 
     public void RegisterCall(int id)
     {
@@ -52,6 +59,11 @@ public class StressController : MonoBehaviour
                 pendingCall.Value.delay++;
                 //Debug.Log("Delay" + pendingCall.Key);
             }
+        }
+
+        if (stressLevel >= currentMaxStressLevel)
+        {
+            stressLevel = currentMaxStressLevel;
         }
 
         SetNeedleRotation();

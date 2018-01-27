@@ -15,6 +15,10 @@ public class GameController : MonoBehaviour {
 
     public static float TimerPeopleTalking = 1.0f;
 
+    public float[] startStressLevel = new float[] { 0, 15, 25, 50 };
+    public float[] maxStressLevel = new float[] { 45, 60, 85, 100 };
+    public float[] phoneRates = new float[] { 1.50f, 1.00f, 0.75f, 0.50f };
+
     public Board Board;
     public GameplayScreen GameplayScreen;
     public StressController StressController;
@@ -34,8 +38,7 @@ public class GameController : MonoBehaviour {
 
         _telephoneCentral = new TelephoneCentral(this, Board, StressController, _phoneUsers);
 
-        currentGameState = GameState.PLAYING;
-        _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], 1.5f, false);
+        StartRound();
     }
 
     private void Update()
@@ -70,10 +73,15 @@ public class GameController : MonoBehaviour {
 
     private IEnumerator Testing()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(5.0f);
+        StartRound();
+    }
 
+    private void StartRound()
+    {
         currentGameState = GameState.PLAYING;
-        _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], 0.5f, false);
+        _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], phoneRates[_currentRound], _currentRound == _phoneCallsHarcoded.phoneCalls.Count - 1);
+        StressController.SetupStresslevels(startStressLevel[_currentRound], maxStressLevel[_currentRound]);
     }
 
     public void NotifyGameOver()
