@@ -65,14 +65,13 @@ public class TelephoneCentral
 
                 if (currentPhoneCall != null)
                     gameController.NotifyShowCaller(currentPhoneCall.caller);
-                
                 return true;
             }
             else if (currentPhoneCall.receiver == receptorId)
             {
                 currentPhoneCall.connected = true;
                 board.CallCompleted(currentPhoneCall.caller, currentPhoneCall.receiver);
-                gameController.CallCompleted();
+                gameController.CallCompleted(currentPhoneCall.caller, receptorId);
                 currentPhoneCall = null;
                 return true;
             }
@@ -117,7 +116,6 @@ public class TelephoneCentral
             EndCalls();
             phoneCallIndex = 0;
             gameController.NotifyEndOfRound();
-            Debug.Log("end of round");
         }
     }
 

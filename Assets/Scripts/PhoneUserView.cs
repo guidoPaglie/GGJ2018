@@ -6,9 +6,21 @@ using UnityEngine.UI;
 public class PhoneUserView : MonoBehaviour {
 
     public Image MyImage;
+    public bool inUse = false;
+    public int id;
 
-	public void Initialize (Sprite sprite) {
-        MyImage.sprite = sprite;
+	public void SetUser (Sprite sprite, int id) {
+        this.id = id;
+
+        inUse = true;
         MyImage.gameObject.SetActive(true);
+        MyImage.sprite = sprite;
 	}
+
+    public void Reset()
+    {
+        id = -1;
+        inUse = false;
+        MyImage.gameObject.SetActive(false);
+    }
 }
