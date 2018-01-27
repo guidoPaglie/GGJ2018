@@ -9,6 +9,7 @@ public class TelephoneCentral
     private Board board;
     private GameController gameController;
     private PhoneUsers phoneUsers;
+    private PhoneCallsHarcode phoneCallsHarcoded;
 
     private List<CallGroup> callGroups; 
 
@@ -24,6 +25,7 @@ public class TelephoneCentral
         this.board = board;
         this.gameController = gameController;
         this.phoneUsers = phoneUsers;
+        this.phoneCallsHarcoded = new PhoneCallsHarcode();
 
         LoadCallGroups();
     }
@@ -44,7 +46,7 @@ public class TelephoneCentral
     {
         board.SubscribeToReceptorEvent(ConnectCall);
 
-        InitializeRound(new List<PhoneCall> { new PhoneCall(1, 2), new PhoneCall(3, 4) }, 2, true);
+        InitializeRound(phoneCallsHarcoded.phoneCalls[GameController.CurrentRound], 2, true);
     }
 
     private void InitializeRound(IEnumerable<PhoneCall> roundPhoneCalls, float roundPhoneCallRate, bool endlessRound = false)
@@ -67,7 +69,7 @@ public class TelephoneCentral
             if (currentPhoneCall == null)
             {
                 currentPhoneCall = phoneCalls.Take(phoneCallIndex).FirstOrDefault(x => !x.connected && x.caller == receptorId);
-                //someone.NotifyShowCaller();
+                gameController.NotifyShowCaller(currentPhoneCall.caller);
                 return true;
             }
             else if (currentPhoneCall.receiver == receptorId)
@@ -89,7 +91,7 @@ public class TelephoneCentral
 
     public void EndCalls()
     {
-        gameController.StopCoroutine("GenerateCalls");
+        gameController.StopCoroutine(GenerateCalls());
     }
 
     public void OnUpdate()
@@ -115,7 +117,7 @@ public class TelephoneCentral
 
         if (phoneCalls.Count(x => x.connected) == phoneCalls.Count)
         {
-            //someone.NotifyEndOfRound();
+            gameController.NotifyEndOfRound();
         }
     }
 

@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    public static int CurrentRound = 0;
+
     public Board Board;
     public GameplayScreen GameplayScreen;
 
     public GameObject PhoneUserPrefab;
 
     private TelephoneCentral _telephoneCentral;
-
     private PhoneUsers _phoneUsers;
 
 	void Start () 
