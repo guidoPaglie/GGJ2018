@@ -34,9 +34,9 @@ public class GameController : MonoBehaviour {
     private PhoneUsers _phoneUsers;
     private PhoneCallsHarcode _phoneCallsHarcoded;
 
-    public static int _currentRound = 0;
+    public static int _currentRound = 2;
 
-    private GameState currentGameState = GameState.NOT_PLAYING;
+    public GameState currentGameState = GameState.NOT_PLAYING;
 
     public List<Sprite> RoundSprites;
     public List<AudioClip> RoundNarrations;
@@ -84,7 +84,8 @@ public class GameController : MonoBehaviour {
         GameplayScreen.CallCompleted(caller, receiver);
 
         Board.ShowCable(receiverId);
-        
+
+        //if (_currentRound == 2 && callerId == 4 && receiverId == 8)
         if (_currentRound == 2 && callerId == 9 && receiverId == 11)
         {
             StartCoroutine(DoCringe(false));

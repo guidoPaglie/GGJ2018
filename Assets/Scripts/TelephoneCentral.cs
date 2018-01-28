@@ -46,7 +46,7 @@ public class TelephoneCentral
         this.phoneUsers = phoneUsers;
         this.sfxController = sfxController;
 
-        board.OnTalkingFinished += TEST;
+        board.OnTalkingFinished += FinishCall;
 
         board.SubscribeToJabEvent(ConnectCall);
         stressController.OnStressPeak += EndCalls;
@@ -54,7 +54,7 @@ public class TelephoneCentral
         LoadCallGroups();
     }
 
-    private void TEST(int callerId, int receiverId)
+    private void FinishCall(int callerId, int receiverId)
     {
         var phoneCall = phoneCalls.FirstOrDefault(call => call.caller == callerId && call.receiver == receiverId);
         if (phoneCall != null)
@@ -92,6 +92,11 @@ public class TelephoneCentral
 
     public ConnectionResult ConnectCall(int receptorId)
     {
+        if(gameController.currentGameState != GameState.PLAYING)
+        {
+            return ConnectionResult.IS_VOID;
+        }
+
         if (phoneCalls.Count(x => x.state == PhoneCallState.PENDING) > 0)
         {
             if (currentPhoneCall == null)

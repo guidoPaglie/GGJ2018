@@ -114,10 +114,10 @@ MonoBehaviour:
   maxStressLevel: 100
   needle: {fileID: 4926413494484704}
   waitTimeToIncreaseStress: 5
-  stressOnDelay: 1
+  stressOnDelay: 1.5
   stressOnError: 5
-  angleMin: 135
-  angleMax: -135
+  angleMin: 90
+  angleMax: -90
 --- !u!212 &212691286922503762
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -195,7 +195,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 61b3fda26645b47e6b222507593386b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

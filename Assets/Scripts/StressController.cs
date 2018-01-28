@@ -19,6 +19,7 @@ public class StressController : MonoBehaviour
     private float stressLevel;
     private float currentMaxStressLevel;
     private Dictionary<int, PendingCall> pendingCalls = new Dictionary<int, PendingCall>();
+    private float needleBounceTimer;
 
     public delegate void StressPeak();
     public event StressPeak OnStressPeak;
@@ -38,6 +39,7 @@ public class StressController : MonoBehaviour
     public void EndCall(int id)
     {
         pendingCalls.Remove(id);
+        stressLevel -= stressOnError;
         //Debug.Log("call ended" + id);
     }
 
@@ -59,6 +61,13 @@ public class StressController : MonoBehaviour
                 pendingCall.Value.delay++;
                 //Debug.Log("Delay" + pendingCall.Key);
             }
+        }
+
+        needleBounceTimer -= Time.deltaTime;
+        if (needleBounceTimer < 0)
+        {
+            stressLevel -= stressOnError;
+            needleBounceTimer = waitTimeToIncreaseStress;
         }
 
         if (stressLevel >= currentMaxStressLevel)
