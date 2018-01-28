@@ -152,7 +152,6 @@ public class TelephoneCentral
         {
             phoneCallRateTimer -= Time.deltaTime;
 
-            Debug.Log(NextPhoneCallIsValid());
             if (phoneCallRateTimer <= 0 && NextPhoneCallIsValid())
             {
                 NotifyIncomingCall(phoneCalls[phoneCallIndex]);

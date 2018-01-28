@@ -325,6 +325,11 @@ Prefab:
       propertyPath: angleMax
       value: -95
       objectReference: {fileID: 0}
+    - target: {fileID: 212713563649800138, guid: 634854fe7a6b4ef43a22db4bfed6580c,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 634854fe7a6b4ef43a22db4bfed6580c, type: 2}
   m_IsPrefabParent: 0
@@ -983,7 +988,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: d4ca00c8e258b4e87a1eeb281d9dddeb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2113,7 +2118,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 4bff4334e4dab4fe0a19f2e30f2d4535, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
