@@ -32,7 +32,7 @@ public class Jab : MonoBehaviour
             if (selectionResponse == ConnectionResult.IS_CALLER || selectionResponse == ConnectionResult.IS_RECEIVER)
                 MyConnector.color = GetColor();
 
-            if (selectionResponse == ConnectionResult.IS_WRONG)
+            if (selectionResponse == ConnectionResult.IS_WRONG && selectionResponse != ConnectionResult.IS_SAME)
             {
                 MyConnector.color = GetColor();
                 StartCoroutine(WrongJab());

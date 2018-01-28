@@ -8,7 +8,7 @@ public class PhoneUser
     public Sprite CharacterSprite;
     public int CallGroup;
 
-	private Dictionary<int, JSONObject> roundTexts;
+	public Dictionary<int, JSONObject> roundTexts;
 
     public PhoneUser (string name, int id, int callGroup)
 	{

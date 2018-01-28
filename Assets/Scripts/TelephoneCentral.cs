@@ -9,7 +9,8 @@ public enum ConnectionResult
     IS_CALLER,
     IS_RECEIVER,
     IS_WRONG,
-    IS_VOID  // es cuando no hay que prender nada
+    IS_VOID,  // es cuando no hay que prender nada
+    IS_SAME
 }
 
 public class TelephoneCentral
@@ -95,6 +96,10 @@ public class TelephoneCentral
             else
             {
                 stressController.WrongConnection();
+
+                if (receptorId == currentPhoneCall.caller)
+                    return ConnectionResult.IS_SAME;
+                
                 return ConnectionResult.IS_WRONG;
 
             }
