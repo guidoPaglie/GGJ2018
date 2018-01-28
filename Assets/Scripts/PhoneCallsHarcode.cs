@@ -14,7 +14,7 @@ public class PhoneCallsHarcode {
         AddPhoneCall(0, 4, 10, 1, 14, 5, 15, 0, 11);
 
         phoneCalls.Add(new List<PhoneCall>());
-        AddPhoneCall(1, 15, 13, 9, 0, 2, 4, 3, 1, 11, 9, 5, 13, 14, 3, 10, 2);
+        AddPhoneCall(1, 15, 13, 9, 0, 2, 4, 3, 1, 11, 9, 14, 3, 10, 2, 5, 13);
 
         phoneCalls.Add(new List<PhoneCall>());
         AddPhoneCall(2, 4, 8, 6, 5, 11, 12 , 7 , 1, 2 , 10 , 0 , 9 , 13 , 6 , 14 , 3, 9 , 11 , 15 ,6 , 3 , 7 , 8 , 10);
