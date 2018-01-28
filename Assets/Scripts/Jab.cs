@@ -6,7 +6,6 @@ public class Jab : MonoBehaviour
 {
     public GameObject MyConnector;
     public SpriteRenderer MyLight;
-    public GameObject DisabledGO;
 
     public List<Sprite> GroupColors;
 
@@ -30,7 +29,6 @@ public class Jab : MonoBehaviour
     public void IsEnable(bool enable)
     {
         GetComponent<BoxCollider2D>().enabled = enable;
-        DisabledGO.SetActive(!enable);
     }
 
     public void OnMouseDown()

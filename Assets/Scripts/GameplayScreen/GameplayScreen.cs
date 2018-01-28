@@ -21,6 +21,9 @@ public class GameplayScreen : MonoBehaviour
 
     public List<Sprite> MsgContainerSprites;
 
+    public List<Sprite> BackSprites;
+    public SpriteRenderer BackSpriteRenderer;
+
     public void SetScreenVisibility(bool visible)
     {
         Panel.SetActive(visible);
@@ -30,6 +33,8 @@ public class GameplayScreen : MonoBehaviour
     {
         CallerMsg.text = "";
         ReceiverMsg.text = "";
+        if (GameController._currentRound < 3)
+            BackSpriteRenderer.sprite = BackSprites[GameController._currentRound];
     }
 
     public void PositionateUserWithSprite(PhoneUser caller, int id)
