@@ -44,7 +44,7 @@ public class StressController : MonoBehaviour
     public void WrongConnection()
     {
         stressLevel += stressOnError;
-        Debug.Log("wrong connection");
+        //Debug.Log("wrong connection");
     }
 
     private void Update()
@@ -70,7 +70,7 @@ public class StressController : MonoBehaviour
 
         if (stressLevel >= maxStressLevel && OnStressPeak != null)
         {
-            OnStressPeak();
+            //OnStressPeak();
         }
     }
 

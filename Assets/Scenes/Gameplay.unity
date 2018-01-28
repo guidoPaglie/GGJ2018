@@ -816,10 +816,10 @@ MonoBehaviour:
   - 0.75
   - 0.5
   timeBetweenRounds:
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
+  - 30.768
+  - 33.109
+  - 36.457
+  - 7.881
   Board: {fileID: 180608465}
   GameplayScreen: {fileID: 1363324603}
   StressController: {fileID: 1835419357}
@@ -828,7 +828,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c22f4e949e70841a58e0d176b0c89f89, type: 3}
   - {fileID: 21300000, guid: 69786dc67eeb549fb838fbb77f10c158, type: 3}
   - {fileID: 21300000, guid: c23e2a3213853410cbd332f2c45e930b, type: 3}
-  - {fileID: 21300000, guid: 9be793352a8a9433fb5f5b0376980d28, type: 3}
+  - {fileID: 21300000, guid: 0056419e1833a49b3ac747822a132d9f, type: 3}
   RoundNarrations:
   - {fileID: 8300000, guid: 878524e7f79549b4780b29c8892943b7, type: 3}
   - {fileID: 8300000, guid: 8575941f060903e45af2514c1cbcd784, type: 3}
@@ -1251,7 +1251,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: c22f4e949e70841a58e0d176b0c89f89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

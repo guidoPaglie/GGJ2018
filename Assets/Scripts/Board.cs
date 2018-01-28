@@ -81,4 +81,11 @@ public class Board : MonoBehaviour {
         if (OnTalkingFinished != null)
             OnTalkingFinished(caller, receiver);
     }
+
+    public void AllCringeShown()
+    {
+        Debug.Log("All cringe shown");
+        board.ForEach(jab => jab.IsEnable(false));
+        //board.ForEach(jab => jab.Reset());
+    }
 }
