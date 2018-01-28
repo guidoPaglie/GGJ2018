@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,6 +9,7 @@ public enum GameState
     NOT_PLAYING,
     PLAYING,
     END_OF_ROUND,
+    CRINGE,
     GAMEOVER
 }
 
@@ -20,6 +22,9 @@ public class GameController : MonoBehaviour {
     public float[] phoneRates = new float[] { 1.50f, 1.00f, 0.75f, 0.50f };
     public float[] timeBetweenRounds = new float[] { 0, 0, 0, 0 };
 
+    public List<Sprite> cringeBack;
+    public List<Sprite> cringeBackEnd;
+
     public Board Board;
     public GameplayScreen GameplayScreen;
     public StressController StressController;
@@ -29,7 +34,7 @@ public class GameController : MonoBehaviour {
     private PhoneUsers _phoneUsers;
     private PhoneCallsHarcode _phoneCallsHarcoded;
 
-    public static int _currentRound = 0;
+    public static int _currentRound = 2;
 
     private GameState currentGameState = GameState.NOT_PLAYING;
 
@@ -79,6 +84,21 @@ public class GameController : MonoBehaviour {
         GameplayScreen.CallCompleted(caller, receiver);
 
         Board.ShowCable(receiverId);
+        
+        if (_currentRound == 2 && callerId == 9 && receiverId == 11)
+        {
+            StartCoroutine(DoCringe(false));
+        }
+
+        if (_currentRound == 3 && callerId == 1 && receiverId == 3)
+        {
+            StartCoroutine(DoCringe(false));
+        }
+
+        if (_currentRound == 3 && callerId == 7 && receiverId == 3)
+        {
+            StartCoroutine(DoCringe(true));
+        }
     }
 
     public void WrongConnection(int receiverId)
@@ -131,6 +151,39 @@ public class GameController : MonoBehaviour {
             yield return new WaitForSeconds(0.05f);
             RoundMusicSource.volume += 0.025f;
         }
+    }
+
+    private IEnumerator DoCringe(bool endCringe)
+    {
+        currentGameState = GameState.CRINGE;
+        RoundMusicSource.Pause();
+
+        yield return new WaitForSeconds(1f);
+
+        SFXController.Stop();
+        SFXController.PlayCringe();
+
+        if (endCringe)
+        {
+            for (int frame = 0; frame < cringeBackEnd.Count; frame++)
+            {
+                GameplayScreen.ChangeBackground(cringeBackEnd[frame]);
+
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+        else
+        {
+            for (int frame = 0; frame < cringeBack.Count; frame++)
+            {
+                GameplayScreen.ChangeBackground(cringeBack[frame]);
+
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+
+        RoundMusicSource.UnPause();
+        currentGameState = GameState.PLAYING;
     }
 
     public void NotifyGameOver()

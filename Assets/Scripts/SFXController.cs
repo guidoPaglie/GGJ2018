@@ -9,6 +9,12 @@ public class SFXController : MonoBehaviour
     public AudioClip plugOut;
     public AudioClip connected;
     public AudioClip error;
+    public AudioClip cringe;
+
+    public void Stop()
+    {
+        audioSource.Stop();
+    }
 
     public void PlayPlugIn()
     {
@@ -31,6 +37,12 @@ public class SFXController : MonoBehaviour
     public void PlayError()
     {
         audioSource.clip = error;
+        audioSource.Play();
+    }
+
+    public void PlayCringe()
+    {
+        audioSource.clip = cringe;
         audioSource.Play();
     }
 }

@@ -34,9 +34,14 @@ public class GameplayScreen : MonoBehaviour
         CallerMsg.text = "";
         ReceiverMsg.text = "";
         if (GameController._currentRound < 3)
-            BackSpriteRenderer.sprite = BackSprites[GameController._currentRound];
+            ChangeBackground(BackSprites[GameController._currentRound]);
     }
 
+    public void ChangeBackground(Sprite background)
+    {
+        BackSpriteRenderer.sprite = background;
+    }
+    
     public void PositionateUserWithSprite(PhoneUser caller, int id)
     {
         PhoneUserView phoneUserView = CallersContainer.FirstOrDefault(user => !user.inUse);
