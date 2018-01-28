@@ -7,7 +7,7 @@ public class StressController : MonoBehaviour
 {
     public float maxStressLevel;
 
-    public RawImage needle;
+    public Transform needle;
 
     public float waitTimeToIncreaseStress;
     public float stressOnDelay;
@@ -78,7 +78,7 @@ public class StressController : MonoBehaviour
     {
         var t = Mathf.InverseLerp(0, maxStressLevel, stressLevel);
 
-        needle.rectTransform.localRotation = Quaternion.Euler(0, 0, Mathf.Lerp(angleMin, angleMax, t));
+        needle.localRotation = Quaternion.Euler(0, 0, Mathf.Lerp(angleMin, angleMax, t));
     }
 
     private class PendingCall

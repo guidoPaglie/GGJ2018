@@ -21,7 +21,7 @@ public class TelephoneCentral
     private StressController stressController;
     private GameController gameController;
     private PhoneUsers phoneUsers;
-    private AudioSource soundEffects;
+    private SFXController sfxController;
 
     private List<CallGroup> callGroups; 
 
@@ -32,7 +32,7 @@ public class TelephoneCentral
     private int phoneCallIndex;
     private PhoneCall currentPhoneCall;
 
-    public TelephoneCentral(GameController gameController, Board board, StressController stressController, PhoneUsers phoneUsers, AudioSource audioSource)
+    public TelephoneCentral(GameController gameController, Board board, StressController stressController, PhoneUsers phoneUsers, SFXController sfxController)
     {
         Instance = this;
 
@@ -40,7 +40,7 @@ public class TelephoneCentral
         this.stressController = stressController;
         this.gameController = gameController;
         this.phoneUsers = phoneUsers;
-        soundEffects = audioSource;
+        this.sfxController = sfxController;
 
         board.SubscribeToJabEvent(ConnectCall);
         stressController.OnStressPeak += EndCalls;
@@ -84,7 +84,7 @@ public class TelephoneCentral
                 if (currentPhoneCall != null)
                 {
                     gameController.NotifyShowCaller(currentPhoneCall.caller);
-                    //soundEffects.clip = gameController.sounds.
+                    sfxController.PlayPlugIn();
                     return ConnectionResult.IS_CALLER;
                 }
             }
@@ -94,6 +94,7 @@ public class TelephoneCentral
                 stressController.EndCall(phoneCalls.IndexOf(currentPhoneCall));
                 gameController.CallCompleted(currentPhoneCall.caller, receptorId);
                 currentPhoneCall = null;
+                sfxController.PlayConnected();
                 return ConnectionResult.IS_RECEIVER;
             }
             else
@@ -108,6 +109,7 @@ public class TelephoneCentral
                 
                 gameController.WrongConnection(receptorId);
 
+                sfxController.PlayError();
                 return ConnectionResult.IS_WRONG;
             }
         }

@@ -18,11 +18,12 @@ public class GameController : MonoBehaviour {
     public float[] startStressLevel = new float[] { 0, 15, 25, 50 };
     public float[] maxStressLevel = new float[] { 45, 60, 85, 100 };
     public float[] phoneRates = new float[] { 1.50f, 1.00f, 0.75f, 0.50f };
-    public float[] timeBetweenRounds = new float[] { 29.0f, 30.0f, 32.0f, 2.0f };
+    public float[] timeBetweenRounds = new float[] { 0, 0, 0, 0 };
 
     public Board Board;
     public GameplayScreen GameplayScreen;
     public StressController StressController;
+    public SFXController SFXController;
 
     private TelephoneCentral _telephoneCentral;
     private PhoneUsers _phoneUsers;
@@ -44,7 +45,7 @@ public class GameController : MonoBehaviour {
         _phoneUsers = new PhoneUsers();
         _phoneCallsHarcoded = new PhoneCallsHarcode();
 
-        _telephoneCentral = new TelephoneCentral(this, Board, StressController, _phoneUsers);
+        _telephoneCentral = new TelephoneCentral(this, Board, StressController, _phoneUsers, SFXController);
 
         //StartGame();
     }

@@ -78,9 +78,12 @@ public class Board : MonoBehaviour {
             obj = LeftCables.FirstOrDefault(cable => !cable.activeSelf);
         else
             obj = RightCables.FirstOrDefault(cable => !cable.activeSelf);
-        
-        obj.SetActive(true);
-        obj.transform.position = jab.transform.position;
+
+        if (obj != null)
+        {
+            obj.SetActive(true);
+            obj.transform.position = jab.transform.position; 
+        }
     }
 
     public void CallCompleted(int caller, int receiver)
