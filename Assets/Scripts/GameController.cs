@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour {
 
     public void NotifyEndOfRound()
     {
-        Debug.Log("ROUND FINISH");
+        //Debug.Log("ROUND FINISH");
         _currentRound++;
 
         currentGameState = GameState.END_OF_ROUND;
@@ -89,6 +89,8 @@ public class GameController : MonoBehaviour {
 
         GameplayScreen.SetScreenVisibility(false);
         GameplayScreen.ResetData();
+
+        Board.ResetBoard();
 
         RoundSprite.gameObject.SetActive(true);
         RoundSprite.sprite = RoundSprites[_currentRound];

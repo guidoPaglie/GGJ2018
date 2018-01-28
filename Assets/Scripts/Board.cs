@@ -14,6 +14,9 @@ public class Board : MonoBehaviour {
 
 	private List<Jab> board;
 
+    private List<int> round1Participants = new List<int>() {0,5,4,1,11,15,10,14 };
+    private List<int> round2Participants = new List<int>() { 0, 5, 4, 1, 11, 15, 10, 14,9,13,2,3 };
+
 	void Awake () 
 	{
 		board = new List<Jab>();
@@ -47,6 +50,15 @@ public class Board : MonoBehaviour {
         }
     }
 
+    public void ResetBoard()
+    {
+        if (GameController._currentRound == 0)
+            board.ForEach(jab => jab.GetComponent<BoxCollider2D>().enabled = round1Participants.Contains(jab.Id));
+        else if (GameController._currentRound == 1)
+            board.ForEach(jab => jab.GetComponent<BoxCollider2D>().enabled = round2Participants.Contains(jab.Id));
+        else
+            board.ForEach(jab => jab.GetComponent<BoxCollider2D>().enabled = true);
+    }
     public void IncomingCall (int caller)
 	{
         board.FirstOrDefault(receptor => receptor.Id == caller).IncomingCall();
