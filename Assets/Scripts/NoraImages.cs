@@ -7,17 +7,11 @@ public class NoraImages : MonoBehaviour {
     public List<Sprite> noraSprites;
     public SpriteRenderer noraSR;
 
-    private int lastRound = 0;
-
-	void Update () 
+	public void ChangeImage (int index) 
     {
-        if (GameController._currentRound != lastRound)
+        if (index < noraSprites.Count)
         {
-            if (lastRound < noraSprites.Count)
-            {
-                noraSR.sprite = noraSprites[lastRound];
-                lastRound++;    
-            }
+            noraSR.sprite = noraSprites[index];
         }
 	}
 }

@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
     private PhoneUsers _phoneUsers;
     private PhoneCallsHarcode _phoneCallsHarcoded;
 
-    public static int _currentRound = 0;
+    public static int _currentRound = 3;
 
     public GameState currentGameState = GameState.NOT_PLAYING;
 
@@ -44,6 +44,8 @@ public class GameController : MonoBehaviour {
     public SpriteRenderer RoundSprite;
     public AudioSource RoundNarration;
     public AudioSource RoundMusicSource;
+
+    public NoraImages noraImages;
 
     void Start () 
     {
@@ -85,7 +87,6 @@ public class GameController : MonoBehaviour {
 
         Board.ShowCable(receiverId);
 
-        //if (_currentRound == 2 && callerId == 4 && receiverId == 8)
         if (_currentRound == 2 && callerId == 9 && receiverId == 11)
         {
             StartCoroutine(DoCringe(false));
@@ -96,7 +97,7 @@ public class GameController : MonoBehaviour {
             StartCoroutine(DoCringe(false));
         }
 
-        if (_currentRound == 3 && callerId == 7 && receiverId == 3)
+        if (_currentRound == 3 && callerId == 0 && receiverId == 11)
         {
             StartCoroutine(DoCringe(true));
         }
@@ -138,6 +139,8 @@ public class GameController : MonoBehaviour {
         RoundNarration.Stop();
         RoundSprite.gameObject.SetActive(false);
         currentGameState = GameState.PLAYING;
+
+        noraImages.ChangeImage(_currentRound);
 
         GameplayScreen.SetScreenVisibility(true);
 

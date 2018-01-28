@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class PhoneUser
 {
@@ -27,4 +28,9 @@ public class PhoneUser
 	{
 		roundTexts[i] = jSONObject;
 	}
+
+    public void SetNewSprite(Sprite brotherNoraImage)
+    {
+        CharacterSprite = brotherNoraImage;
+    }
 }

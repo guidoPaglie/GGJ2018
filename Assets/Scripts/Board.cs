@@ -20,6 +20,8 @@ public class Board : MonoBehaviour {
 
     public Action<int, int> OnTalkingFinished;
 
+    public Sprite BrotherNoraImage;
+
 	void Awake () 
 	{
 		board = new List<Jab>();

@@ -172,15 +172,18 @@ public class TelephoneCentral
             } 
         }
 
+        //Debug.Log(phoneCalls.Count(x => x.state == PhoneCallState.FINISHED));
         if (isEndless && phoneCalls.Count(x => x.state == PhoneCallState.FINISHED) == 16 && !HasFinishedRound)
         {
-            Debug.Log("Generate calls");
+            //Debug.Log("Generate calls");
             gameController.StartCoroutine(GenerateCalls());
             HasFinishedRound = true;
+
+            phoneUsers.users.ForEach(user => user.SetNewSprite(board.BrotherNoraImage));
         }
         else if (phoneCalls.Count(x => x.state == PhoneCallState.FINISHED) == phoneCalls.Count)
         {
-            Debug.Log("Rodun finish");
+            //Debug.Log("Rodun finish");
             RoundFinish();
         }
     }

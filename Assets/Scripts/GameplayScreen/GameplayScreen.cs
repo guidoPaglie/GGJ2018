@@ -79,6 +79,7 @@ public class GameplayScreen : MonoBehaviour
 
     public void ShowCallerMessage(PhoneUser caller)
     {
+        Debug.Log(GameController._currentRound + " " + TelephoneCentral.HasFinishedRound);
         if (GameController._currentRound == 3 && TelephoneCentral.HasFinishedRound)
         {
             Debug.Log("caller cringe");
@@ -120,6 +121,8 @@ public class GameplayScreen : MonoBehaviour
 
     private void ShowCringeText(Text textContainer)
     {
+        Debug.Log(cringeTexts.texts[currentCringeText]);
+
         textContainer.text = cringeTexts.texts[currentCringeText];
         currentCringeText++;
 
