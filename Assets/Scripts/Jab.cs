@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Jab : MonoBehaviour 
 {
-    public SpriteRenderer MyConnector;
-    public GameObject MyLight;
+    public GameObject MyConnector;
+    public SpriteRenderer MyLight;
     public GameObject DisabledGO;
+
+    public List<Sprite> GroupColors;
 
     public float timeJabErrorOn = 1.0f;
 
@@ -21,7 +25,7 @@ public class Jab : MonoBehaviour
 
     public void IncomingCall()
 	{
-        MyLight.SetActive(true);
+        MyLight.sprite = GetSpriteColor();
     }
 
     public void IsEnable(bool enable)
@@ -37,11 +41,15 @@ public class Jab : MonoBehaviour
             var selectionResponse = OnReceptorSelected(Id);
 
             if (selectionResponse == ConnectionResult.IS_CALLER || selectionResponse == ConnectionResult.IS_RECEIVER)
-                MyConnector.color = GetColor();
+            {
+                MyConnector.SetActive(true);
+                MyLight.sprite = GetSpriteColor();
+            }
 
             if (selectionResponse == ConnectionResult.IS_WRONG && selectionResponse != ConnectionResult.IS_SAME)
             {
-                MyConnector.color = GetColor();
+                MyLight.sprite = GetSpriteColor();
+
                 StartCoroutine(WrongJab());
             }
         }
@@ -50,26 +58,27 @@ public class Jab : MonoBehaviour
     private IEnumerator WrongJab()
     {
         yield return new WaitForSeconds(timeJabErrorOn);
-        MyConnector.color = Color.white;
+
+        MyLight.sprite = null;
     }
 
     public void Reset()
     {
-        MyLight.SetActive(false);
-        MyConnector.color = Color.white;
+        MyLight.sprite = null;
+        MyConnector.gameObject.SetActive(false);
     }
 
-    private Color GetColor()
+    private Sprite GetSpriteColor()
     {
         if (Id == 0 || Id == 9 || Id == 11 || Id == 12 )
-            return Color.green;
-        if (Id == 1 || Id == 3 || Id == 7 || Id == 14)
-            return Color.blue;
+            return GroupColors[0];
         if (Id == 5 || Id == 6 || Id == 13 || Id == 15)
-            return Color.red;
+            return GroupColors[1];
         if (Id == 2 || Id == 4 || Id == 8 || Id == 10)
-            return Color.yellow;
+            return GroupColors[2];
+        if (Id == 1 || Id == 3 || Id == 7 || Id == 14)
+            return GroupColors[3];
 
-        return Color.black;
+        return GroupColors[0];
     }
 }

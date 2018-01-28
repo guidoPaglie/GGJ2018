@@ -41,6 +41,8 @@ public class GameController : MonoBehaviour {
         _phoneCallsHarcoded = new PhoneCallsHarcode();
 
         _telephoneCentral = new TelephoneCentral(this, Board, StressController, _phoneUsers);
+
+        StartGame();
     }
 
     public void StartGame()

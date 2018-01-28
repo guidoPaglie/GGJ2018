@@ -43,7 +43,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1878952668264696
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +75,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4146889357601852
 Transform:
   m_ObjectHideFlags: 1
@@ -84,7 +84,7 @@ Transform:
   m_GameObject: {fileID: 1878952668264696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.2, y: 0.05, z: 0.2}
   m_Children: []
   m_Father: {fileID: 4774787632136280}
   m_RootOrder: 2
@@ -96,8 +96,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1886250946031564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: -0, y: -0.198, z: 0}
+  m_LocalScale: {x: 1, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 4774787632136280}
   m_RootOrder: 0
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1407910930413002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: -0.393, z: 0}
+  m_LocalPosition: {x: 0.029, y: -0.662, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4774787632136280}
@@ -167,9 +167,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8e8ce742e4945a28b8e94d65b3aaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyConnector: {fileID: 212500004830273206}
-  MyLight: {fileID: 1407910930413002}
+  MyConnector: {fileID: 1886250946031564}
+  MyLight: {fileID: 212582309134605430}
   DisabledGO: {fileID: 1878952668264696}
+  GroupColors:
+  - {fileID: 21300000, guid: ab7a3d8d3f701432f8632cc51c9aa73a, type: 3}
+  - {fileID: 21300000, guid: d4256a87775814fae9485de1f349237c, type: 3}
+  - {fileID: 21300000, guid: 6b7bfeda9c56d4598ac11b6c40a04dc3, type: 3}
+  - {fileID: 21300000, guid: 68d79f503a0d141bb92797f3a844f99f, type: 3}
   timeJabErrorOn: 1
 --- !u!212 &212500004830273206
 SpriteRenderer:
@@ -203,7 +208,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -245,15 +250,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.90344834, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212685513353620352
 SpriteRenderer:
