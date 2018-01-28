@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
     private PhoneUsers _phoneUsers;
     private PhoneCallsHarcode _phoneCallsHarcoded;
 
-    public static int _currentRound = 2;
+    public static int _currentRound = 0;
 
     private GameState currentGameState = GameState.NOT_PLAYING;
 

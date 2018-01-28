@@ -167,7 +167,7 @@ public class TelephoneCentral
             } 
         }
 
-        if (isEndless && phoneCalls.Count(x => x.state == PhoneCallState.FINISHED) == 2 && !HasFinishedRound)
+        if (isEndless && phoneCalls.Count(x => x.state == PhoneCallState.FINISHED) == 16 && !HasFinishedRound)
         {
             Debug.Log("Generate calls");
             gameController.StartCoroutine(GenerateCalls());
