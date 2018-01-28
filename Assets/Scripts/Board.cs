@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Board : MonoBehaviour {
 
@@ -11,6 +12,9 @@ public class Board : MonoBehaviour {
 
     public float difX = 2.0f;
     public float difY = 1.20f;
+
+    public List<GameObject> LeftCables;
+    public List<GameObject> RightCables;
 
 	private List<Jab> board;
 
@@ -59,14 +63,32 @@ public class Board : MonoBehaviour {
         else
               board.ForEach(jab => jab.IsEnable(true));
     }
+
     public void IncomingCall (int caller)
-	{
+    {
         board.FirstOrDefault(receptor => receptor.Id == caller).IncomingCall();
 	}
+
+    public void ShowCable(int jabToConnectCable)
+    {
+        Jab jab = board.FirstOrDefault(receptor => receptor.Id == jabToConnectCable);
+
+        GameObject obj;
+        if (jab.transform.position.x < 0)
+            obj = LeftCables.FirstOrDefault(cable => !cable.activeSelf);
+        else
+            obj = RightCables.FirstOrDefault(cable => !cable.activeSelf);
+        
+        obj.SetActive(true);
+        obj.transform.position = jab.transform.position;
+    }
 
     public void CallCompleted(int caller, int receiver)
     {
         board.FirstOrDefault(receptor => receptor.Id == caller).Reset();
         board.FirstOrDefault(receptor => receptor.Id == receiver).Reset();
+
+        LeftCables.ForEach(cable => cable.SetActive(false));
+        RightCables.ForEach(cable => cable.SetActive(false));
     }
 }
