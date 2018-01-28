@@ -4,15 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScreen : MonoBehaviour 
 {
-    public Button StartGameBtn;
+    public GameController game;
 
-	void Start () 
+	void OnMouseDown () 
     {
-        StartGameBtn.onClick.AddListener(StartGame);		
-	}
-
-	void StartGame () 
-    {
-        SceneManager.LoadScene("Gameplay",LoadSceneMode.Single);	
+        game.StartGame();
+        gameObject.SetActive(false);
 	}
 }

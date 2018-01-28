@@ -41,8 +41,11 @@ public class GameController : MonoBehaviour {
         _phoneCallsHarcoded = new PhoneCallsHarcode();
 
         _telephoneCentral = new TelephoneCentral(this, Board, StressController, _phoneUsers);
+    }
 
-        StartCoroutine(StartRound(0.0f, TIME_BETWEEN_ROUNDS));
+    public void StartGame()
+    {
+        StartCoroutine(StartRound(0.0f, TIME_BETWEEN_ROUNDS));   
     }
 
     private void Update()

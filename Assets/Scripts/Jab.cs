@@ -5,6 +5,7 @@ public class Jab : MonoBehaviour
 {
     public SpriteRenderer MyConnector;
     public GameObject MyLight;
+    public GameObject DisabledGO;
 
     public float timeJabErrorOn = 1.0f;
 
@@ -21,7 +22,13 @@ public class Jab : MonoBehaviour
     public void IncomingCall()
 	{
         MyLight.SetActive(true);
-	}
+    }
+
+    public void IsEnable(bool enable)
+    {
+        GetComponent<BoxCollider2D>().enabled = enable;
+        DisabledGO.SetActive(!enable);
+    }
 
     public void OnMouseDown()
     {

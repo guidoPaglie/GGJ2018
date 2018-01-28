@@ -53,11 +53,11 @@ public class Board : MonoBehaviour {
     public void ResetBoard()
     {
         if (GameController._currentRound == 0)
-            board.ForEach(jab => jab.GetComponent<BoxCollider2D>().enabled = round1Participants.Contains(jab.Id));
+            board.ForEach(jab => jab.IsEnable(round1Participants.Contains(jab.Id)));
         else if (GameController._currentRound == 1)
-            board.ForEach(jab => jab.GetComponent<BoxCollider2D>().enabled = round2Participants.Contains(jab.Id));
+            board.ForEach(jab => jab.IsEnable(round2Participants.Contains(jab.Id)));
         else
-            board.ForEach(jab => jab.GetComponent<BoxCollider2D>().enabled = true);
+              board.ForEach(jab => jab.IsEnable(true));
     }
     public void IncomingCall (int caller)
 	{
