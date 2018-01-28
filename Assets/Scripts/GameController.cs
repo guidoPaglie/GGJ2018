@@ -109,7 +109,6 @@ public class GameController : MonoBehaviour {
 
     public void NotifyEndOfRound()
     {
-        Debug.Log("ROUND FINISH");
         _currentRound++;
         RoundMusicSource.Stop();
         RoundMusicSource.volume = 0;

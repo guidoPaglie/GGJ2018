@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class GameplayScreen : MonoBehaviour
 {
@@ -24,6 +25,14 @@ public class GameplayScreen : MonoBehaviour
     public List<Sprite> BackSprites;
     public SpriteRenderer BackSpriteRenderer;
 
+    private CringeTexts cringeTexts;
+    private int currentCringeText;
+
+    public void Awake()
+    {
+        cringeTexts = new CringeTexts();
+    }
+
     public void SetScreenVisibility(bool visible)
     {
         Panel.SetActive(visible);
@@ -33,8 +42,8 @@ public class GameplayScreen : MonoBehaviour
     {
         CallerMsg.text = "";
         ReceiverMsg.text = "";
-        if (GameController._currentRound < 3)
-            ChangeBackground(BackSprites[GameController._currentRound]);
+
+        BackSpriteRenderer.sprite = BackSprites[GameController._currentRound < 3 ? GameController._currentRound : 2];
     }
 
     public void ChangeBackground(Sprite background)
@@ -70,28 +79,60 @@ public class GameplayScreen : MonoBehaviour
 
     public void ShowCallerMessage(PhoneUser caller)
     {
-        CallerMsg.text = caller.roundTexts[GameController._currentRound]["inicio"].str;
+        if (GameController._currentRound == 3 && TelephoneCentral.HasFinishedRound)
+        {
+            Debug.Log("caller cringe");
+            ShowCringeText(CallerMsg);
+        }
+        else
+        {
+            CallerMsg.text = caller.roundTexts[GameController._currentRound]["inicio"].str;
+        }
 
-        CallerMsgContainer.sprite = GetSprite(caller.Id);
+        CallerMsgContainer.sprite = GetSprite(caller.Id);    
     }
 
     public void ShowReceiverMessage(PhoneUser receiver, bool isRight, int callerId)
     {
-        var strKey = isRight ? "r-positivo" : "r-neutral";
-        if (isRight)
+        if (GameController._currentRound == 3 && TelephoneCentral.HasFinishedRound)
         {
-            if (receiver.roundTexts[GameController._currentRound][strKey].Count > 0)
-                ReceiverMsg.text = receiver.roundTexts[GameController._currentRound][strKey][callerId.ToString()].str;
-            else
-                ReceiverMsg.text = receiver.roundTexts[GameController._currentRound][strKey].str;
+            Debug.Log("receiver cringe");
+            ShowCringeText(ReceiverMsg);
         }
         else
         {
-            ReceiverMsg.text = receiver.roundTexts[GameController._currentRound][strKey].str;
+            var strKey = isRight ? "r-positivo" : "r-neutral";
+            if (isRight)
+            {
+                if (receiver.roundTexts[GameController._currentRound][strKey].Count > 0)
+                    ReceiverMsg.text = receiver.roundTexts[GameController._currentRound][strKey][callerId.ToString()].str;
+                else
+                    ReceiverMsg.text = receiver.roundTexts[GameController._currentRound][strKey].str;
+            }
+            else
+            {
+                ReceiverMsg.text = receiver.roundTexts[GameController._currentRound][strKey].str;
+            }
         }
 
-
         ReceiverMsgContainer.sprite = GetSprite(receiver.Id);
+    }
+
+    private void ShowCringeText(Text textContainer)
+    {
+        textContainer.text = cringeTexts.texts[currentCringeText];
+        currentCringeText++;
+
+        if (currentCringeText == 9)
+        {
+            Board.AllCringeShown();
+            Invoke("ChangeScene", 2.0f);
+        }
+    }
+
+    private void ChangeScene()
+    {
+        SceneManager.LoadScene("Gameover", LoadSceneMode.Single);
     }
 
     private Sprite GetSprite(int Id)

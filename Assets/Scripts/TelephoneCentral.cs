@@ -32,6 +32,10 @@ public class TelephoneCentral
     private int phoneCallIndex;
     private PhoneCall currentPhoneCall;
 
+    public bool isEndless;
+
+    public static bool HasFinishedRound = false;
+
     public TelephoneCentral(GameController gameController, Board board, StressController stressController, PhoneUsers phoneUsers, SFXController sfxController)
     {
         Instance = this;
@@ -78,10 +82,12 @@ public class TelephoneCentral
         
         phoneCalls.AddRange(roundPhoneCalls);
 
-        if (endlessRound)
-        {
-            gameController.StartCoroutine(GenerateCalls());
-        }
+        isEndless = endlessRound;
+
+        //if (endlessRound)
+        //{
+        //    gameController.StartCoroutine(GenerateCalls());
+        //}
     }
 
     public ConnectionResult ConnectCall(int receptorId)
@@ -161,8 +167,15 @@ public class TelephoneCentral
             } 
         }
 
-        if (phoneCalls.Count(x => x.state == PhoneCallState.FINISHED) == phoneCalls.Count)
+        if (isEndless && phoneCalls.Count(x => x.state == PhoneCallState.FINISHED) == 2 && !HasFinishedRound)
         {
+            Debug.Log("Generate calls");
+            gameController.StartCoroutine(GenerateCalls());
+            HasFinishedRound = true;
+        }
+        else if (phoneCalls.Count(x => x.state == PhoneCallState.FINISHED) == phoneCalls.Count)
+        {
+            Debug.Log("Rodun finish");
             RoundFinish();
         }
     }
