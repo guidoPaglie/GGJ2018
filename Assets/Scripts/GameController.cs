@@ -75,12 +75,12 @@ public class GameController : MonoBehaviour {
     public void WrongConnection(int receiverId)
     {
         var receiver = _phoneUsers.users.FirstOrDefault(user => user.Id == receiverId);
-        GameplayScreen.ShowReceiverMessage(receiver, false);
+        GameplayScreen.ShowReceiverMessage(receiver, false, -1);
     }
 
     public void NotifyEndOfRound()
     {
-        //Debug.Log("ROUND FINISH");
+        Debug.Log("ROUND FINISH");
         _currentRound++;
 
         currentGameState = GameState.END_OF_ROUND;
