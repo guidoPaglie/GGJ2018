@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class Jab : MonoBehaviour 
 {
     public SpriteRenderer MyLight;
+    public SpriteRenderer Cable;
 
     public List<Sprite> GroupColors;
 
@@ -18,6 +20,14 @@ public class Jab : MonoBehaviour
     public void Initialize(int id)
     {
         Id = id;
+
+        if (transform.position.x > 0 )
+        {
+            Cable.sprite = Resources.Load<Sprite>("CableDerecho");
+            Vector3 newPos = Cable.transform.localPosition;
+            newPos.x = 0.35f;
+            Cable.transform.localPosition = newPos;
+        }
     }
 
     public void IncomingCall()
@@ -60,6 +70,7 @@ public class Jab : MonoBehaviour
     public void Reset()
     {
         MyLight.sprite = null;
+        HideCable();
     }
 
     private Sprite GetSpriteColor()
@@ -74,5 +85,15 @@ public class Jab : MonoBehaviour
             return GroupColors[3];
 
         return GroupColors[0];
+    }
+
+    public void ShowCable()
+    {
+        Cable.gameObject.SetActive(true);
+    }
+
+    public void HideCable()
+    {
+        Cable.gameObject.SetActive(false);
     }
 }

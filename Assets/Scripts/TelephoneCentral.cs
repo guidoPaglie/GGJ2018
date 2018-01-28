@@ -42,10 +42,21 @@ public class TelephoneCentral
         this.phoneUsers = phoneUsers;
         this.sfxController = sfxController;
 
+        board.OnTalkingFinished += TEST;
+
         board.SubscribeToJabEvent(ConnectCall);
         stressController.OnStressPeak += EndCalls;
 
         LoadCallGroups();
+    }
+
+    private void TEST(int callerId, int receiverId)
+    {
+        var phoneCall = phoneCalls.FirstOrDefault(call => call.caller == callerId && call.receiver == receiverId);
+        if (phoneCall != null)
+        {
+            phoneCall.state = PhoneCallState.FINISHED;
+        }
     }
 
     private void LoadCallGroups()
@@ -75,11 +86,16 @@ public class TelephoneCentral
 
     public ConnectionResult ConnectCall(int receptorId)
     {
-        if (phoneCalls.Count(x => !x.connected) > 0)
+        if (phoneCalls.Count(x => x.state == PhoneCallState.PENDING) > 0)
         {
             if (currentPhoneCall == null)
             {
-                currentPhoneCall = phoneCalls.Take(phoneCallIndex).FirstOrDefault(x => !x.connected && x.caller == receptorId);
+                if (phoneCalls.Count(x => x.state == PhoneCallState.CONNECTED) > 2)
+                {
+                    return ConnectionResult.IS_VOID;
+                }
+
+                currentPhoneCall = phoneCalls.Take(phoneCallIndex).FirstOrDefault(x => x.state == PhoneCallState.PENDING && x.caller == receptorId);
 
                 if (currentPhoneCall != null)
                 {
@@ -90,7 +106,7 @@ public class TelephoneCentral
             }
             else if (currentPhoneCall.receiver == receptorId)
             {
-                currentPhoneCall.connected = true;
+                currentPhoneCall.state = PhoneCallState.CONNECTED;
                 stressController.EndCall(phoneCalls.IndexOf(currentPhoneCall));
                 gameController.CallCompleted(currentPhoneCall.caller, receptorId);
                 currentPhoneCall = null;
@@ -104,7 +120,7 @@ public class TelephoneCentral
                 if (receptorId == currentPhoneCall.caller)
                     return ConnectionResult.IS_SAME;
 
-                if (phoneCalls.Take(phoneCallIndex).Any(x => !x.connected && x.caller == receptorId))
+                if (phoneCalls.Take(phoneCallIndex).Any(x => x.state == PhoneCallState.PENDING && x.caller == receptorId))
                     return ConnectionResult.IS_SAME;
                 
                 gameController.WrongConnection(receptorId);
@@ -119,6 +135,7 @@ public class TelephoneCentral
 
     public void NotifyIncomingCall(PhoneCall phoneCall)
     {
+        phoneCall.state = PhoneCallState.PENDING;
         board.IncomingCall(phoneCall.caller);
         stressController.RegisterCall(phoneCalls.IndexOf(phoneCall));
     }
@@ -131,16 +148,11 @@ public class TelephoneCentral
 
     public void OnUpdate()
     {
-        var text = string.Empty;
-        foreach (var call in phoneCalls.Where(x => !x.connected))
-        {
-            text += string.Format("Call from{0} to {1}{2}", call.caller, call.receiver, Environment.NewLine);
-        }
-
         if (phoneCallIndex < phoneCalls.Count)
         {
             phoneCallRateTimer -= Time.deltaTime;
 
+            Debug.Log(NextPhoneCallIsValid());
             if (phoneCallRateTimer <= 0 && NextPhoneCallIsValid())
             {
                 NotifyIncomingCall(phoneCalls[phoneCallIndex]);
@@ -150,7 +162,7 @@ public class TelephoneCentral
             } 
         }
 
-        if (phoneCalls.Count(x => x.connected) == phoneCalls.Count)
+        if (phoneCalls.Count(x => x.state == PhoneCallState.FINISHED) == phoneCalls.Count)
         {
             RoundFinish();
         }
@@ -166,14 +178,14 @@ public class TelephoneCentral
     {
         var nextPhoneCall = phoneCalls[phoneCallIndex];
 
-        return phoneCalls.Take(phoneCallIndex).All(x => x.connected || (x.caller != nextPhoneCall.caller && x.receiver != nextPhoneCall.caller && x.caller != nextPhoneCall.receiver && x.receiver != nextPhoneCall.receiver));
+        return phoneCalls.Take(phoneCallIndex).All(x => x.state == PhoneCallState.FINISHED || (x.caller != nextPhoneCall.caller && x.receiver != nextPhoneCall.caller && x.caller != nextPhoneCall.receiver && x.receiver != nextPhoneCall.receiver));
     }
 
     private IEnumerator GenerateCalls()
     {
         while (true)
         {
-            if (phoneCalls.Count(x => !x.connected) < 8)
+            if (phoneCalls.Count(x => x.state == PhoneCallState.WAITING) < 8)
             {
                 phoneCalls.Add(CreateRandomPhoneCall());
             }
@@ -190,7 +202,7 @@ public class TelephoneCentral
         do
         {
             callerId = UnityEngine.Random.Range(0, 16);
-        } while (phoneCalls.Skip(phoneCalls.Count - 6).All(x => !x.connected && (x.caller == callerId || x.receiver == callerId)));
+        } while (phoneCalls.Skip(phoneCalls.Count - 6).All(x => x.state != PhoneCallState.CONNECTED && (x.caller == callerId || x.receiver == callerId)));
 
 
         var callGroup = callGroups.FirstOrDefault(x => x.callers.Contains(callerId));

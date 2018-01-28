@@ -39,7 +39,9 @@ public class GameplayScreen : MonoBehaviour
 
     public void PositionateUserWithSprite(PhoneUser caller, int id)
     {
-        CallersContainer.FirstOrDefault(user => !user.inUse).SetUser(caller.CharacterSprite, id);
+        PhoneUserView phoneUserView = CallersContainer.FirstOrDefault(user => !user.inUse);
+        if (phoneUserView != null)
+            phoneUserView.SetUser(caller.CharacterSprite, id);
     }
 
     public void CallCompleted(PhoneUser caller, PhoneUser receiver)
@@ -54,6 +56,7 @@ public class GameplayScreen : MonoBehaviour
 
         yield return new WaitForSeconds(GameController.TIME_PEOPLE_TALKING);
 
+        // aca se apagan los mensajes
         CallersContainer.FirstOrDefault(user => user.id == caller.Id).Reset();
         ReceiversContainer.FirstOrDefault(user => user.id == receiver.Id).Reset();
 

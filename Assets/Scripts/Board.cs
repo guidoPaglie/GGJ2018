@@ -13,13 +13,12 @@ public class Board : MonoBehaviour {
     public float difX = 2.0f;
     public float difY = 1.20f;
 
-    public List<GameObject> LeftCables;
-    public List<GameObject> RightCables;
-
 	private List<Jab> board;
 
     private List<int> round1Participants = new List<int>() {0,5,4,1,11,15,10,14 };
     private List<int> round2Participants = new List<int>() { 0, 5, 4, 1, 11, 15, 10, 14,9,13,2,3 };
+
+    public Action<int, int> OnTalkingFinished;
 
 	void Awake () 
 	{
@@ -38,9 +37,9 @@ public class Board : MonoBehaviour {
 			{
                 Vector2 pos = new Vector2 (j * difX, i * -difY);
                 Jab newJab = Instantiate (JabPrefab, pos, Quaternion.identity).GetComponent<Jab>();
-                newJab.Initialize(id);
 				board.Add(newJab);
                 newJab.gameObject.transform.SetParent(this.transform, false);
+                newJab.Initialize(id);
                 id++;
 			}
 		}	
@@ -71,19 +70,7 @@ public class Board : MonoBehaviour {
 
     public void ShowCable(int jabToConnectCable)
     {
-        Jab jab = board.FirstOrDefault(receptor => receptor.Id == jabToConnectCable);
-
-        GameObject obj;
-        if (jab.transform.position.x < 0)
-            obj = LeftCables.FirstOrDefault(cable => !cable.activeSelf);
-        else
-            obj = RightCables.FirstOrDefault(cable => !cable.activeSelf);
-
-        if (obj != null)
-        {
-            obj.SetActive(true);
-            obj.transform.position = jab.transform.position; 
-        }
+        board.FirstOrDefault(receptor => receptor.Id == jabToConnectCable).ShowCable();
     }
 
     public void CallCompleted(int caller, int receiver)
@@ -91,9 +78,7 @@ public class Board : MonoBehaviour {
         board.FirstOrDefault(receptor => receptor.Id == caller).Reset();
         board.FirstOrDefault(receptor => receptor.Id == receiver).Reset();
 
-        // Esto esta mal porque apago todo y otros cables tienen que quedar prendidos.
-        // solucion: puedo poner cada cable en cada jab... :D JAMMMM!!
-        LeftCables.ForEach(cable => cable.SetActive(false));
-        RightCables.ForEach(cable => cable.SetActive(false));
+        if (OnTalkingFinished != null)
+            OnTalkingFinished(caller, receiver);
     }
 }
