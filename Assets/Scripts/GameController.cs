@@ -13,12 +13,12 @@ public enum GameState
 
 public class GameController : MonoBehaviour {
 
-    public static float TIME_PEOPLE_TALKING = 0.2f;
-    public static float TIME_BETWEEN_ROUNDS = 0.2f;
+    public static float TIME_PEOPLE_TALKING = 3.0f;
 
     public float[] startStressLevel = new float[] { 0, 15, 25, 50 };
     public float[] maxStressLevel = new float[] { 45, 60, 85, 100 };
     public float[] phoneRates = new float[] { 1.50f, 1.00f, 0.75f, 0.50f };
+    public float[] timeBetweenRounds = new float[] { 29.0f, 30.0f, 32.0f, 2.0f };
 
     public Board Board;
     public GameplayScreen GameplayScreen;
@@ -28,12 +28,16 @@ public class GameController : MonoBehaviour {
     private PhoneUsers _phoneUsers;
     private PhoneCallsHarcode _phoneCallsHarcoded;
 
-    public static int _currentRound;
+    public static int _currentRound = 0;
 
     private GameState currentGameState = GameState.NOT_PLAYING;
 
     public List<Sprite> RoundSprites;
+    public List<AudioClip> RoundNarrations;
+    public List<AudioClip> RoundMusic;
     public SpriteRenderer RoundSprite;
+    public AudioSource RoundNarration;
+    public AudioSource RoundMusicSource;
 
     void Start () 
     {
@@ -42,12 +46,12 @@ public class GameController : MonoBehaviour {
 
         _telephoneCentral = new TelephoneCentral(this, Board, StressController, _phoneUsers);
 
-        StartGame();
+        //StartGame();
     }
 
     public void StartGame()
     {
-        StartCoroutine(StartRound(0.0f, TIME_BETWEEN_ROUNDS));   
+        StartCoroutine(StartRound(0.0f, timeBetweenRounds[_currentRound]));   
     }
 
     private void Update()
@@ -82,10 +86,12 @@ public class GameController : MonoBehaviour {
     {
         //Debug.Log("ROUND FINISH");
         _currentRound++;
+        RoundMusicSource.Stop();
+        RoundMusicSource.volume = 0;
 
         currentGameState = GameState.END_OF_ROUND;
 
-        StartCoroutine(StartRound(TIME_PEOPLE_TALKING, TIME_BETWEEN_ROUNDS));
+        StartCoroutine(StartRound(TIME_PEOPLE_TALKING, timeBetweenRounds[_currentRound]));
     }
 
     private IEnumerator StartRound(float endOfRound, float difRound)
@@ -99,9 +105,12 @@ public class GameController : MonoBehaviour {
 
         RoundSprite.gameObject.SetActive(true);
         RoundSprite.sprite = RoundSprites[_currentRound];
+        RoundNarration.clip = RoundNarrations[_currentRound];
+        RoundNarration.PlayDelayed(0.5f);
 
         yield return new WaitForSeconds(difRound);
 
+        RoundNarration.Stop();
         RoundSprite.gameObject.SetActive(false);
         currentGameState = GameState.PLAYING;
 
@@ -109,6 +118,14 @@ public class GameController : MonoBehaviour {
 
         _telephoneCentral.InitializeRound(_phoneCallsHarcoded.phoneCalls[_currentRound], phoneRates[_currentRound], _currentRound == _phoneCallsHarcoded.phoneCalls.Count - 1);
         StressController.SetupStresslevels(startStressLevel[_currentRound], maxStressLevel[_currentRound]);
+        RoundMusicSource.clip = RoundMusic[_currentRound];
+        RoundMusicSource.Play();
+
+        while (RoundMusicSource.volume < 0.2f)
+        {
+            yield return new WaitForSeconds(0.05f);
+            RoundMusicSource.volume += 0.025f;
+        }
     }
 
     public void NotifyGameOver()

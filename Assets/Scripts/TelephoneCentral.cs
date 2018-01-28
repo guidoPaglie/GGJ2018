@@ -21,6 +21,7 @@ public class TelephoneCentral
     private StressController stressController;
     private GameController gameController;
     private PhoneUsers phoneUsers;
+    private AudioSource soundEffects;
 
     private List<CallGroup> callGroups; 
 
@@ -31,7 +32,7 @@ public class TelephoneCentral
     private int phoneCallIndex;
     private PhoneCall currentPhoneCall;
 
-    public TelephoneCentral(GameController gameController, Board board, StressController stressController, PhoneUsers phoneUsers)
+    public TelephoneCentral(GameController gameController, Board board, StressController stressController, PhoneUsers phoneUsers, AudioSource audioSource)
     {
         Instance = this;
 
@@ -39,6 +40,7 @@ public class TelephoneCentral
         this.stressController = stressController;
         this.gameController = gameController;
         this.phoneUsers = phoneUsers;
+        soundEffects = audioSource;
 
         board.SubscribeToJabEvent(ConnectCall);
         stressController.OnStressPeak += EndCalls;
@@ -82,6 +84,7 @@ public class TelephoneCentral
                 if (currentPhoneCall != null)
                 {
                     gameController.NotifyShowCaller(currentPhoneCall.caller);
+                    //soundEffects.clip = gameController.sounds.
                     return ConnectionResult.IS_CALLER;
                 }
             }
