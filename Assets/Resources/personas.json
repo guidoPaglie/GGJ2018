@@ -30,359 +30,359 @@
     "id": 1,
     "callgroup": 4,
     "round1": {
-      "inicio": "hola",
-      "r-positivo": "asada",
-      "r-neutral": "2"
+      "inicio": "I want to talk to my lazy grand nephew. He's a bum and I need him to behave properly.",
+      "r-positivo": "",
+      "r-neutral": "Miss, I don't know this person."
     },
     "round2": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "",
+      "r-positivo": "Shhh! The operator is hearing, you dummy. Give me a little time.",
+      "r-neutral": "Young lady, I think you made a mistake.",
+      "r-negativo": "Your incompetence triggers some heavy war flashbacks."
     },
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "",
+      "r-positivo": "Erhm... Sorry, mister, you dialed the wrong number... *cough*",
+      "r-neutral": "This communication is not for me. You're wasting my time.",
+      "r-negativo": "I guess I risked my ass on Germany to protect useless ladies like you."
     },
     "round4": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Give me Tony, he has to give me a little more time... I'll get everything, I swear!",
+      "r-positivo": "Thomas? What are you talking about? Tommy? Please, no!",
+      "r-neutral": "Miss, it's not a good time to bother me with a wrong call.",
+      "r-negativo": "You communist scum! Learn to use the phone!"
     }
   },
   "viuda": {
     "id": 4,
     "callgroup": 3,
     "round1": {
-      "inicio": "hola",
-      "r-positivo": "asada",
-      "r-neutral": "2"
+      "inicio": "Oh, you must be the new operator. I want to speak with Dr. Fritzler. I think my meds are wrong.",
+      "r-positivo": "",
+      "r-neutral": "Oh, honey, I'm not the person you're looking for."
     },
     "round2": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "",
+      "r-positivo": "Oh, dear Mr. Johnson, I feel lonely too, really miss my dear Daniel. But you're such a weird man.",
+      "r-neutral": "Darling, I think you took me for someone else.",
+      "r-negativo": "Young lady, you just ruined my tea party with this nonsense."
     },
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Oh, I feel so melancholic, I need to speak to my husband.",
+      "r-positivo": "",
+      "r-neutral": "No, you poor thing. This is not for me.",
+      "r-negativo": "What kind of simpleton are you? Not my number!"
     },
     "round4": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Get me, Mr. Johnson. I can't even breath. I'm going to hell, I don't want to die!",
+      "r-positivo": "What!? What kind of pills have you been given me??? Am I alright?",
+      "r-neutral": "Please don't call me, I fell so sick!",
+      "r-negativo": "You'll cause me a breakdown, you little brat! Stop bothering me!"
     }
   },
   "carnicero": {
     "id": 5,
     "callgroup": 2,
     "round1": {
-      "inicio": "hola",
-      "r-positivo": "asada",
-      "r-neutral": "2"
+      "inicio": "Mmm? Oh, you're Susan's replacement. Can you get me Albert Valentino? I have this great idea for a movie.",
+      "r-positivo": "",
+      "r-neutral": "I'm sorry, miss. I'm not the person you're trying to reach. I'm just the butcher."
     },
     "round2": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Hi, I need to speak to Becky. I need to get back with her.",
+      "r-positivo": "",
+      "r-neutral": "No, miss. That's not me.",
+      "r-negativo": "I have work to do, and that cow won't kill by itself."
     },
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "",
+      "r-positivo": "Easy, Mr. Kiwi. I will have your *special delivery* pretty soon.",
+      "r-neutral": "Listen to me, little lamb, I'm busy. Stop calling this number.",
+      "r-negativo": "Don't piss the guy with the big knife."
     },
     "round4": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "I want to talk to Becky. Becky, please, you must forgive me! I beg you! I can change!",
+      "r-positivo": "Kiwi? He did that to me...? I won't do nothing. It's her biz, man.",
+      "r-neutral": "I'm not mad at you 'cause I have a good heart. It's on a shelf in my shop.",
+      "r-negativo": "Cut the line or I'll cut your throat!"
     }
   },
   "ninita": {
     "id": 11,
     "callgroup": 1,
     "round1": {
-      "inicio": "hola",
-      "r-positivo": "asada",
-      "r-neutral": "2"
+      "inicio": "",
+      "r-positivo": "Hi, sister Helen. I'm doing fine. Thanks for calling!",
+      "r-neutral": "Sorry, this is not the number, ma'am."
     },
     "round2": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Ma'am. I need to speak to Bishop Lorenzo. I think... it's happening again.",
+      "r-positivo": "",
+      "r-neutral": "Ma'am, I'm afraid you called the wrong number.",
+      "r-negativo": "Don't you know the telephone is not a toy?"
     },
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "I... must... communicate... with my master!",
+      "r-positivo": "I'm afraid! Please save me.",
+      "r-neutral": "This is not the call I'm waiting.",
+      "r-negativo": "Don't fool with me, mortal!"
     },
     "round4": {
-      "inicio": "hola",
+      "inicio": "...",
       "r-positivo": {
-        "12": "dsfsdf",
-        "9": "sdasdas"
+        "0": "HA HA HA HA HA HA HAAAAAA",
+        "9": "NO, I AM COMING FOR YOU."
       },
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "r-neutral": "No, I'm not that person. But help me!",
+      "r-negativo": "I WILL FEAST ON YOUR BLOOD!"
     }
   },
   "galan": {
     "id": 15,
     "callgroup": 2,
     "round1": {
-      "inicio": "hola",
-      "r-positivo": "asada",
-      "r-neutral": "2"
+      "inicio": "",
+      "r-positivo": "Erhm... Great idea, Ash. I'll discuss it with my producer...",
+      "r-neutral": "Sadly I'm not the man you are after, mademoiselle."
     },
     "round2": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Miss, link me with Lady Becky, please. I would like to know if she have any plans for tonight.",
+      "r-positivo": "",
+      "r-neutral": "Wrong number, unless you want to go out on a date tonight, babe.",
+      "r-negativo": "Another mistake? Clearly you want a piece of Albert Valentino, don't you?."
     },
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Get me the dwarf! Don't you dare to touch her, you shorty lunatic!",
+      "r-positivo": "",
+      "r-neutral": "It's too late to hook up with the Valentino, rascal.",
+      "r-negativo": "Stop calling me, you tease."
     },
     "round4": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Operator, get me the butcher. We have to do something, she's dating that canival dwarf!",
+      "r-positivo": "But, please, Becky. He's a dangerous half fellow!",
+      "r-neutral": "Leave me alone!",
+      "r-negativo": "You incompetent bitch! Don't you have nothing in that little brain?"
     }
   },
   "doctor": {
     "id": 10,
     "callgroup": 3,
     "round1": {
-      "inicio": "hola",
-      "r-positivo": {
-        "2": "dsfsdf",
-        "8": "sdasdas"
-      },
-      "r-neutral": "2"
+      "inicio": "",
+      "r-positivo": "For the sixth time, Mrs. Bracknell. Your prescriptions are fine. You have nothing to worry about.",
+      "r-neutral": "This is the chemistry, miss."
     },
     "round2": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Hello, Miss. I'd like you to connect me with Mr. Johnson. I wonder if he has new animals for me.",
+      "r-positivo": "",
+      "r-neutral": "Fritzler and Son's Drugstore, how may I help you?",
+      "r-negativo": "Young lady, please don't call if it's not an emergency."
     },
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "",
+      "r-positivo": {
+        "2": "Excellent! It will be a great addition for my collection of stuffed animals.",
+        "8": "At first I had my doubts on your powers, Madame Camile. But now I know is for the best..."
+      },
+      "r-neutral": "I can offer you a tonic for your memory issues, little dove.",
+      "r-negativo": "Maybe I can recommend you a good old electroshock therapy?"
     },
     "round4": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Operator, get me Lady Bracknell. I think I do messed up her prescriptions.",
+      "r-positivo": "I only hope the ghosts are satisfied now.",
+      "r-neutral": "In my medical opinion, you're a good candidate for a lobotomy.",
+      "r-negativo": "Keep calling my store and I'll take your heart off!"
     }
   },
   "adolescente": {
     "id": 14,
     "callgroup": 4,
     "round1": {
-      "inicio": "hola",
-      "r-positivo": "asada",
-      "r-neutral": "2"
+      "inicio": "",
+      "r-positivo": "Don't worry about me, gramps. I'm staying out of trouble.",
+      "r-neutral": "Nope, sorry. That's not me."
     },
     "round2": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Hey, sugar pie. Please get me this number. I have the most amazing idea for a prank.",
+      "r-positivo": "",
+      "r-neutral": "Sorry, chick. It's me, Tommy.",
+      "r-negativo": "Again, not my call. But you can ring my bell anytime you want, pretty."
     },
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Hey, honeybun. Can you call my gramps? I need to ask him for some cash.",
+      "r-positivo": "",
+      "r-neutral": "Can't help you, puppy. That's not for me.",
+      "r-negativo": "Oh, angel, you must be crazy for me, always calling me for no reason."
     },
     "round4": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Call my old man. I just want to say I'm sorry.",
+      "r-positivo": "I know what it's all about. It's a deal, I'm in.",
+      "r-neutral": "Sexy pants, not in the mood for chatting right now.",
+      "r-negativo": "Sugar tits, you're just being dumb."
     }
   },
   "cura": {
     "id": 9,
     "callgroup": 1,
     "round2": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "You must be the new operator. I'm still so shocked about what happened to the last girl... Please get me sister Helen.",
+      "r-positivo": "Just give yourself to God and pray, my child. Everything will be according to the Lord's will.",
+      "r-neutral": "You reach the wrong person, my faithful operator.",
+      "r-negativo": "Stay alert and don't walk away from the righteous path, my child."
     },
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "I need to speak to Sweet Mel. She has to know this is all in her imagination. Jesus loves you.",
+      "r-positivo": "Try to be tranquil, sister Helen. It won't happen again. I'm praying for her soul.",
+      "r-neutral": "This is not of mine or the Lord's business.",
+      "r-negativo": "How clumsy of you, child."
     },
     "round4": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Miss, please, I have to know how the orphan is! I'm coming after her!",
+      "r-positivo": "I know this is not your true face, creature of the underworld! Evil spirit, begone!",
+      "r-neutral": "I'm pretty busy with the Lord's affairs.",
+      "r-negativo": "You filthy gossip girl! I condemn you to an eternity of suffering!"
     }
   },
   "prostituta": {
     "id": 13,
     "callgroup": 2,
     "round2": {
-      "inicio": "hola",
+      "inicio": "",
       "r-positivo": {
-        "15": "dsfsdf",
-        "5": "sdasdas"
+        "15": "Get lost, chump. I'm in no mood for your huge ego. Hop over your sports car and find another naive gal.",
+        "5": "Oh, Ash... I really miss your big steaks, but our relationship is over."
       },
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "r-neutral": "I'm sorry, girl. Wrong bird.",
+      "r-negativo": "Do you like hearing my voice? Make an appointment."
     },
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dsfsdfsd",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Hi, girl. I need to speak with my little sexy boy, please.",
+      "r-positivo": "",
+      "r-neutral": "Not for me. Try again later.",
+      "r-negativo": "Not in the mood for prank calls, skinny."
     },
     "round4": {
       "inicio": "hola",
       "r-positivo": {
-        "5": "dsfsdf",
-        "6": "sdasdas"
+        "5": "Oh, get over it, Ash. I moved on. You're being a big baby.",
+        "6": "Oh, I wonder what you'll cook for me. I'll bring dessert, if you know what I mean..."
       },
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "r-neutral": "Please, don't occupy the line. You ruin my business.",
+      "r-negativo": "Bitch, stop calling me for nothing! Can't you see I'm gettin' all juiced up for my gummybear?"
     }
   },
   "viejo": {
     "id": 2,
     "callgroup": 3,
     "round2": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Hello, young lady. I can't hear you well. I want to speak to old widow Bracknell. I feel so lonely...",
+      "r-positivo": "The little critters are very elusive these days. Good for my garden, bad for your taxidermy project.",
+      "r-neutral": "I think you want to speak to a different person, young lady.",
+      "r-negativo": "You interrupted my nap!"
     },
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Get me Dr. Fritzler. Just got a good squirrel for him. Lil' basterd never saw it coming, he he.",
+      "r-positivo": "",
+      "r-neutral": "I don't know that person. But please, speak with me. I'm so lonely.",
+      "r-negativo": "In the old days, young people respected their elders, you know?"
     },
     "round4": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "I want the ghost lady!",
+      "r-positivo": "Too bad, because we all die anyway! Ha ha ha.",
+      "r-neutral": "I miss a shot on a evil chimpmunk for getting this call...",
+      "r-negativo": "WHAT? I CAN'T HEAR YOU. IS IT YOU, DAISY?"
     }
   },
   "mafioso": {
     "id": 3,
     "callgroup": 4,
     "round2": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Susan? I thought you were d-- Oh, you are the new girl. Get me Sargeant McCallister, please. He owes me money.",
+      "r-positivo": "Ha ha! Nice joke. I like your style, boy. I could use a wit like that.",
+      "r-neutral": "Sorry, miss. It's not me.",
+      "r-negativo": "Lady, try to not mess with me."
     },
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Just call this public phone. Don't ask why, miss.",
+      "r-positivo": "",
+      "r-neutral": "Wrong number. Don't call again.",
+      "r-negativo": "I'm a passionate man, I advice you against pissing me off, miss"
     },
     "round4": {
-      "inicio": "hola",
+      "inicio": "Get me Tommy. I have a job for him. He won't like it, but it's necessary.",
       "r-positivo": {
-        "1": "dsfsdf",
-        "7": "sdasdas"
+        "1": "Too late, sargeant... That's what you get when you mess with Tony.",
+        "7": "No way back, Willy. It is done."
       },
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "r-neutral": "I'll make you sleep with the fishes.",
+      "r-negativo": "I'll tear your head off, cunt. Just stop calling!"
     }
   },
   "payaso": {
     "id": 12,
     "callgroup": 1,
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "",
+      "r-positivo": "...",
+      "r-neutral": "...",
+      "r-negativo": "*heavy breathing*"
     },
     "round4": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "...",
+      "r-positivo": "Do it.",
+      "r-neutral": "HA HA HA HA HA HA HA HA",
+      "r-negativo": "YOU WILL BE NEXT, NORAH"
     }
   },
   "enano": {
     "id": 6,
     "callgroup": 2,
     "round3": {
-      "inicio": "hola",
+      "inicio": "Operator, call the butcher. I'm really hungry.",
       "r-positivo": {
-        "13": "dsfsdf",
-        "15": "sdasdas"
+        "13": "Hi, lolipop. I want to eat you so badly, but there's a show tonight and the lion refuses to cover for me.",
+        "15": "Oh, come on, don't be jelous. There's a slice of Becky for everyone."
       },
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "r-neutral": "Wrong number, unless you're looking for the bearded woman.",
+      "r-negativo": "Do you have any idea how difficult is reaching this phone bell for me?"
     },
     "round4": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Let's have dinner in my tent tonight, lolipop.",
+      "r-positivo": "",
+      "r-neutral": "I'm saving my tummy, but call back tomorrow.",
+      "r-negativo": "I'm gonna eat your face off, bitch!"
     }
   },
   "medium": {
     "id": 8,
     "callgroup": 3,
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "I need to talk to my fellow death manager. We have matters to discuss.",
+      "r-positivo": "I feel a connection... A warm place. He's speaking through me... MABEL, WE'LL MEET SOON DOWN HERE HA HA HA.",
+      "r-neutral": "I don't have space for any more appointments right now.",
+      "r-negativo": "Not me. But do you know who to ask for some white powder? It's part of my magic."
     },
     "round4": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "Operator, call Dr. Fritzler. He has done a good job and deserves to know it.",
+      "r-positivo": "I've already told you. The ghosts in your family don't want to talk to you, old man.",
+      "r-neutral": "If you want to speak with the dead so urgently, you might just try killing yourself.",
+      "r-negativo": "I have a message from a suffering soul: GET LOST."
     }
   },
   "hobbo": {
     "id": 7,
     "callgroup": 4,
     "round3": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "The military set me up. They knew. I can't let them win. It's a conspiracy! I want to speak with the authorities!",
+      "r-positivo": "You shall help me in my revenge! He is the real enemy! The nazis and the commies know it too!",
+      "r-neutral": "They are hearing EVERYTHING!",
+      "r-negativo": "Are you... are you with them? Are you spying me???"
     },
     "round4": {
-      "inicio": "hola",
-      "r-positivo": "dssdfs",
-      "r-neutral": "meh",
-      "r-negativo": "lcdtm"
+      "inicio": "You filthy gangster! Mob conspiracy! The aliens are involved. I never wanted to be this way! Didn't want him to get the lead shower!",
+      "r-positivo": "",
+      "r-neutral": "The Illuminati are behind all of this I know!",
+      "r-negativo": "The squirrels spies the milkmen which are in league with the little dolphins who controls the network across the ocean that stores our conversations!"
     }
   }
 }

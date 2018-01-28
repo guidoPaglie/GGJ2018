@@ -99,9 +99,10 @@ public class TelephoneCentral
 
                 if (receptorId == currentPhoneCall.caller)
                     return ConnectionResult.IS_SAME;
-                
-                return ConnectionResult.IS_WRONG;
 
+                gameController.WrongConnection(receptorId);
+
+                return ConnectionResult.IS_WRONG;
             }
         }
 

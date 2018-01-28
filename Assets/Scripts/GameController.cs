@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -29,7 +28,7 @@ public class GameController : MonoBehaviour {
     private PhoneUsers _phoneUsers;
     private PhoneCallsHarcode _phoneCallsHarcoded;
 
-    private int _currentRound;
+    public static int _currentRound;
 
     private GameState currentGameState = GameState.NOT_PLAYING;
 
@@ -58,6 +57,7 @@ public class GameController : MonoBehaviour {
     {
         var caller = _phoneUsers.users.FirstOrDefault(user => user.Id == currentCaller);
         GameplayScreen.PositionateUserWithSprite(caller, currentCaller);
+        GameplayScreen.ShowCallerMessage(caller);
     }
 
     public void CallCompleted(int callerId, int receiverId)
@@ -65,6 +65,12 @@ public class GameController : MonoBehaviour {
         var caller = _phoneUsers.users.FirstOrDefault(user => user.Id == callerId);
         var receiver = _phoneUsers.users.FirstOrDefault(user => user.Id == receiverId);
         GameplayScreen.CallCompleted(caller, receiver);
+    }
+
+    public void WrongConnection(int receiverId)
+    {
+        var receiver = _phoneUsers.users.FirstOrDefault(user => user.Id == receiverId);
+        GameplayScreen.ShowReceiverMessage(receiver, false);
     }
 
     public void NotifyEndOfRound()
@@ -82,6 +88,7 @@ public class GameController : MonoBehaviour {
         yield return new WaitForSeconds(endOfRound);
 
         GameplayScreen.SetScreenVisibility(false);
+        GameplayScreen.ResetData();
 
         RoundSprite.gameObject.SetActive(true);
         RoundSprite.sprite = RoundSprites[_currentRound];

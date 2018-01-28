@@ -13,12 +13,23 @@ public class GameplayScreen : MonoBehaviour
     public Text CallerMsg;
     public Text ReceiverMsg;
 
+    public Image CallerMsgContainer;
+    public Image ReceiverMsgContainer;
+
     public List<PhoneUserView> CallersContainer;
     public List<PhoneUserView> ReceiversContainer;
+
+    public List<Sprite> MsgContainerSprites;
 
     public void SetScreenVisibility(bool visible)
     {
         Panel.SetActive(visible);
+    }
+
+    public void ResetData()
+    {
+        CallerMsg.text = "";
+        ReceiverMsg.text = "";
     }
 
     public void PositionateUserWithSprite(PhoneUser caller, int id)
@@ -28,6 +39,7 @@ public class GameplayScreen : MonoBehaviour
 
     public void CallCompleted(PhoneUser caller, PhoneUser receiver)
     {
+        ShowReceiverMessage(receiver, true);
         StartCoroutine(CallerAndReceivingTalking(caller, receiver));
     }
 
@@ -41,5 +53,34 @@ public class GameplayScreen : MonoBehaviour
         ReceiversContainer.FirstOrDefault(user => user.id == receiver.Id).Reset();
 
         Board.CallCompleted(caller.Id, receiver.Id);
+    }
+
+    public void ShowCallerMessage(PhoneUser caller)
+    {
+        CallerMsg.text = caller.roundTexts[GameController._currentRound]["inicio"].str;
+
+        CallerMsgContainer.sprite = GetSprite(caller.Id);
+    }
+
+    public void ShowReceiverMessage(PhoneUser receiver, bool isRight)
+    {
+        var strKey = isRight ? "r-positivo" : "r-neutral";
+        ReceiverMsg.text = receiver.roundTexts[GameController._currentRound][strKey].str;
+
+        ReceiverMsgContainer.sprite = GetSprite(receiver.Id);
+    }
+
+    private Sprite GetSprite(int Id)
+    {
+        if (Id == 0 || Id == 9 || Id == 11 || Id == 12)
+            return MsgContainerSprites[0];
+        if (Id == 5 || Id == 6 || Id == 13 || Id == 15)
+            return MsgContainerSprites[1];
+        if (Id == 2 || Id == 4 || Id == 8 || Id == 10)
+            return MsgContainerSprites[2];
+        if (Id == 1 || Id == 3 || Id == 7 || Id == 14)
+            return MsgContainerSprites[3];
+
+        return MsgContainerSprites[0];
     }
 }
