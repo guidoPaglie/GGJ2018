@@ -88,6 +88,8 @@ public class Board : MonoBehaviour {
         board.FirstOrDefault(receptor => receptor.Id == caller).Reset();
         board.FirstOrDefault(receptor => receptor.Id == receiver).Reset();
 
+        // Esto esta mal porque apago todo y otros cables tienen que quedar prendidos.
+        // solucion: puedo poner cada cable en cada jab... :D JAMMMM!!
         LeftCables.ForEach(cable => cable.SetActive(false));
         RightCables.ForEach(cable => cable.SetActive(false));
     }

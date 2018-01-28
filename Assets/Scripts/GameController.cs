@@ -13,8 +13,8 @@ public enum GameState
 
 public class GameController : MonoBehaviour {
 
-    public static float TIME_PEOPLE_TALKING = 0.2f;
-    public static float TIME_BETWEEN_ROUNDS = 0.2f;
+    public static float TIME_PEOPLE_TALKING = 3.0f;
+    public static float TIME_BETWEEN_ROUNDS = 5.0f;
 
     public float[] startStressLevel = new float[] { 0, 15, 25, 50 };
     public float[] maxStressLevel = new float[] { 45, 60, 85, 100 };
@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour {
 
         _telephoneCentral = new TelephoneCentral(this, Board, StressController, _phoneUsers);
 
-        StartGame();
+        //StartGame();
     }
 
     public void StartGame()
