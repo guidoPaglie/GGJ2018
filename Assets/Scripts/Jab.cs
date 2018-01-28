@@ -4,9 +4,7 @@ using System.Collections.Generic;
 
 public class Jab : MonoBehaviour 
 {
-    public GameObject MyConnector;
     public SpriteRenderer MyLight;
-    public GameObject DisabledGO;
 
     public List<Sprite> GroupColors;
 
@@ -30,7 +28,6 @@ public class Jab : MonoBehaviour
     public void IsEnable(bool enable)
     {
         GetComponent<BoxCollider2D>().enabled = enable;
-        DisabledGO.SetActive(!enable);
     }
 
     public void OnMouseDown()
@@ -41,7 +38,6 @@ public class Jab : MonoBehaviour
 
             if (selectionResponse == ConnectionResult.IS_CALLER || selectionResponse == ConnectionResult.IS_RECEIVER)
             {
-                MyConnector.SetActive(true);
                 MyLight.sprite = GetSpriteColor();
             }
 
@@ -64,7 +60,6 @@ public class Jab : MonoBehaviour
     public void Reset()
     {
         MyLight.sprite = null;
-        MyConnector.gameObject.SetActive(false);
     }
 
     private Sprite GetSpriteColor()

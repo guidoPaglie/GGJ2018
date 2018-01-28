@@ -103,6 +103,9 @@ public class TelephoneCentral
                 if (receptorId == currentPhoneCall.caller)
                     return ConnectionResult.IS_SAME;
 
+                if (phoneCalls.Take(phoneCallIndex).Any(x => !x.connected && x.caller == receptorId))
+                    return ConnectionResult.IS_SAME;
+                
                 gameController.WrongConnection(receptorId);
 
                 return ConnectionResult.IS_WRONG;

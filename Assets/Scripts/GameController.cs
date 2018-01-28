@@ -67,6 +67,8 @@ public class GameController : MonoBehaviour {
         var caller = _phoneUsers.users.FirstOrDefault(user => user.Id == currentCaller);
         GameplayScreen.PositionateUserWithSprite(caller, currentCaller);
         GameplayScreen.ShowCallerMessage(caller);
+
+        Board.ShowCable(currentCaller);
     }
 
     public void CallCompleted(int callerId, int receiverId)
@@ -74,17 +76,19 @@ public class GameController : MonoBehaviour {
         var caller = _phoneUsers.users.FirstOrDefault(user => user.Id == callerId);
         var receiver = _phoneUsers.users.FirstOrDefault(user => user.Id == receiverId);
         GameplayScreen.CallCompleted(caller, receiver);
+
+        Board.ShowCable(receiverId);
     }
 
     public void WrongConnection(int receiverId)
     {
         var receiver = _phoneUsers.users.FirstOrDefault(user => user.Id == receiverId);
-        GameplayScreen.ShowReceiverMessage(receiver, false);
+        GameplayScreen.ShowReceiverMessage(receiver, false, -1);
     }
 
     public void NotifyEndOfRound()
     {
-        //Debug.Log("ROUND FINISH");
+        Debug.Log("ROUND FINISH");
         _currentRound++;
         RoundMusicSource.Stop();
         RoundMusicSource.volume = 0;

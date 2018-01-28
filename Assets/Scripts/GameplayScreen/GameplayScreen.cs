@@ -21,6 +21,9 @@ public class GameplayScreen : MonoBehaviour
 
     public List<Sprite> MsgContainerSprites;
 
+    public List<Sprite> BackSprites;
+    public SpriteRenderer BackSpriteRenderer;
+
     public void SetScreenVisibility(bool visible)
     {
         Panel.SetActive(visible);
@@ -30,6 +33,8 @@ public class GameplayScreen : MonoBehaviour
     {
         CallerMsg.text = "";
         ReceiverMsg.text = "";
+        if (GameController._currentRound < 3)
+            BackSpriteRenderer.sprite = BackSprites[GameController._currentRound];
     }
 
     public void PositionateUserWithSprite(PhoneUser caller, int id)
@@ -39,7 +44,7 @@ public class GameplayScreen : MonoBehaviour
 
     public void CallCompleted(PhoneUser caller, PhoneUser receiver)
     {
-        ShowReceiverMessage(receiver, true);
+        ShowReceiverMessage(receiver, true, caller.Id);
         StartCoroutine(CallerAndReceivingTalking(caller, receiver));
     }
 
@@ -62,10 +67,21 @@ public class GameplayScreen : MonoBehaviour
         CallerMsgContainer.sprite = GetSprite(caller.Id);
     }
 
-    public void ShowReceiverMessage(PhoneUser receiver, bool isRight)
+    public void ShowReceiverMessage(PhoneUser receiver, bool isRight, int callerId)
     {
         var strKey = isRight ? "r-positivo" : "r-neutral";
-        ReceiverMsg.text = receiver.roundTexts[GameController._currentRound][strKey].str;
+        if (isRight)
+        {
+            if (receiver.roundTexts[GameController._currentRound][strKey].Count > 0)
+                ReceiverMsg.text = receiver.roundTexts[GameController._currentRound][strKey][callerId.ToString()].str;
+            else
+                ReceiverMsg.text = receiver.roundTexts[GameController._currentRound][strKey].str;
+        }
+        else
+        {
+            ReceiverMsg.text = receiver.roundTexts[GameController._currentRound][strKey].str;
+        }
+
 
         ReceiverMsgContainer.sprite = GetSprite(receiver.Id);
     }

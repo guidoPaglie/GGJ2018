@@ -42,7 +42,10 @@
     },
     "round3": {
       "inicio": "",
-      "r-positivo": "Erhm... Sorry, mister, you dialed the wrong number... *cough*",
+      "r-positivo": {
+        "14": "Do you want money? Well, find a job, toddler! At your age I was an experienced worker at the nail factory!",
+        "7": "Erhm... Sorry, mister, you dialed the wrong number... *cough*"
+      },
       "r-neutral": "This communication is not for me. You're wasting my time.",
       "r-negativo": "I guess I risked my ass on Germany to protect useless ladies like you."
     },
@@ -262,7 +265,7 @@
       "r-negativo": "Not in the mood for prank calls, skinny."
     },
     "round4": {
-      "inicio": "hola",
+      "inicio": "Call the playboy. He needs to stop sticking his nose. I'm with a real man now!",
       "r-positivo": {
         "5": "Oh, get over it, Ash. I moved on. You're being a big baby.",
         "6": "Oh, I wonder what you'll cook for me. I'll bring dessert, if you know what I mean..."
